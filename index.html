@@ -6,33 +6,110 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#667eea">
+<meta name="theme-color" content="#6366f1">
 <title>Sofía y Noa - Aprende Jugando</title>
-<link rel="apple-touch-icon" href="icon.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Patrick+Hand&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+/* ============================================
+   DESIGN SYSTEM - APPLE-INSPIRED (AJUSTADO)
+   ============================================ */
 :root {
-  --primary: #FFD700;
-  --secondary: #FF4500;
-  --accent: #00E676;
-  --blue: #4FC3F7;
-  --pink: #FF80AB;
-  --purple: #B388FF;
-  --bg-grad: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --bg-menu: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
-  --font-fun: 'Fredoka One', cursive;
+  /* Colors - Refined blue & lilac palette */
+  --color-primary: #6366f1;
+  --color-primary-light: #818cf8;
+  --color-primary-dark: #4f46e5;
+  --color-secondary: #a78bfa;        /* lilac */
+  --color-secondary-light: #c4b5fd;
+  --color-secondary-dark: #8b5cf6;
+  
+  --color-accent: #10b981;
+  --color-warning: #fbbf24;
+  --color-error: #ef4444;
+  --color-success: #22c55e;
+  
+  /* Semantic Colors */
+  --color-bg-primary: #f8fafc;
+  --color-bg-secondary: #f1f5f9;
+  --color-bg-tertiary: #e2e8f0;
+  
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #94a3b8;
+  --color-text-inverse: #ffffff;
+  
+  /* Glass Effect */
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  
+  /* Game Colors (softer, integrated) */
+  --color-zoo: #fb923c;
+  --color-numbers: #60a5fa;
+  --color-geo: #34d399;
+  --color-colors: #f472b6;
+  
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  
+  /* Safe Areas */
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-out;
+  --transition-base: 250ms ease-out;
+  --transition-slow: 350ms ease-out;
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-* { 
-  box-sizing: border-box; 
-  margin: 0; 
-  padding: 0; 
-  user-select: none; 
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
@@ -42,63 +119,151 @@ html {
   position: fixed;
   width: 100%;
   height: 100%;
+  font-size: 16px;
 }
 
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: var(--font-family);
+  font-weight: 500;
   overflow: hidden;
   height: 100dvh;
-  height: 100vh;
   width: 100vw;
-  background: var(--bg-grad);
+  background: linear-gradient(145deg, #f1f5f9 0%, #e0e7ff 100%);
+  color: var(--color-text-primary);
   padding-top: var(--safe-top);
   padding-bottom: var(--safe-bottom);
   padding-left: var(--safe-left);
   padding-right: var(--safe-right);
   overscroll-behavior: none;
   touch-action: manipulation;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- PARTÍCULAS DE FONDO --- */
-#bgParticles { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-.particle { 
-  position: absolute; 
-  border-radius: 50%; 
-  animation: float linear infinite;
-  opacity: 0.6;
-}
-@keyframes float { 
-  from { transform: translateY(100vh) rotate(0deg); opacity: 0; } 
-  50% { opacity: 0.6; } 
-  to { transform: translateY(-10vh) rotate(360deg); opacity: 0; } 
+user-select: none;
+
+/* ============================================
+   ANIMATED BACKGROUND (AZUL/LILA)
+   ============================================ */
+.bg-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: 
+    radial-gradient(ellipse 80% 50% at 20% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(167, 139, 250, 0.18) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 30% at 50% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+    linear-gradient(145deg, #f1f5f9 0%, #e0e7ff 100%);
+  animation: bgShift 25s ease-in-out infinite;
 }
 
-/* --- PANTALLAS --- */
+@keyframes bgShift {
+  0%, 100% { filter: hue-rotate(0deg) brightness(1); }
+  50% { filter: hue-rotate(5deg) brightness(1.02); }
+}
+
+.bg-pattern {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Floating Orbs (lilac/blue) */
+.orbs-container {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.5;
+  animation: orbFloat 30s ease-in-out infinite;
+}
+
+.orb:nth-child(1) {
+  width: 300px;
+  height: 300px;
+  background: rgba(99, 102, 241, 0.3);
+  top: -100px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.orb:nth-child(2) {
+  width: 250px;
+  height: 250px;
+  background: rgba(167, 139, 250, 0.3);
+  bottom: -50px;
+  right: -50px;
+  animation-delay: -8s;
+}
+
+.orb:nth-child(3) {
+  width: 200px;
+  height: 200px;
+  background: rgba(99, 102, 241, 0.2);
+  top: 50%;
+  left: 50%;
+  animation-delay: -16s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(50px, 25px) scale(1.1); }
+  50% { transform: translate(25px, 50px) scale(0.95); }
+  75% { transform: translate(-25px, 25px) scale(1.05); }
+}
+
+/* ============================================
+   SCREENS SYSTEM
+   ============================================ */
 .screen {
-  position: absolute; 
-  inset: 0; 
-  display: none; 
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
-  z-index: 10; 
-  padding: 15px;
-  padding-top: calc(15px + var(--safe-top));
-  padding-bottom: calc(15px + var(--safe-bottom));
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  padding: var(--space-4);
+  padding-top: calc(var(--space-4) + var(--safe-top));
+  padding-bottom: calc(var(--space-4) + var(--safe-bottom));
 }
-.screen.active { display: flex; animation: fadeIn 0.5s ease-out; }
-@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-/* ========================================
-   PANTALLA 1: PORTADA
-   ======================================== */
+.screen.active {
+  display: flex;
+  animation: screenEnter var(--transition-slow);
+}
+
+@keyframes screenEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================
+   PORTADA SCREEN
+   ============================================ */
 #portada {
-  background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 50%, #7EC8E3 100%);
+  background: transparent;
   padding: 0;
   justify-content: flex-start;
 }
 
-.portada-container {
+.portada-content {
   width: 100%;
   height: 100%;
   display: flex;
@@ -108,467 +273,685 @@ body {
   position: relative;
 }
 
-.portada-image {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  max-height: 85vh;
-  object-fit: contain;
-  border-radius: 0;
-  animation: floatImage 3s ease-in-out infinite;
-}
-
-@keyframes floatImage {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.play-btn-portada {
-  position: absolute;
-  bottom: 8%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, #4FC3F7 0%, #29B6F6 100%);
-  color: white;
-  padding: 18px 50px;
-  font-family: var(--font-fun);
-  font-size: clamp(1.2rem, 5vw, 1.8rem);
-  border-radius: 50px;
-  border: 4px solid white;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 4px 0 #0288D1;
-  cursor: pointer;
-  animation: pulse 1.5s ease-in-out infinite;
+.portada-image-wrapper {
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: 10px;
-  min-height: 60px;
-  z-index: 20;
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-8);
 }
 
-.play-btn-portada:active {
-  transform: translateX(-50%) scale(0.95);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 2px 0 #0288D1;
+.portada-image {
+  width: 100%;
+  max-width: min(480px, 90vw);
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: var(--radius-2xl);
+  animation: gentleFloat 4s ease-in-out infinite;
+  filter: drop-shadow(0 20px 40px rgba(99, 102, 241, 0.2));
 }
 
-@keyframes pulse {
-  0%, 100% { transform: translateX(-50%) scale(1); }
-  50% { transform: translateX(-50%) scale(1.05); }
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
-/* ========================================
-   PANTALLA 2: MENÚ DE JUEGOS
-   ======================================== */
+.portada-button-wrapper {
+  width: 100%;
+  padding: var(--space-6);
+  padding-bottom: calc(var(--space-8) + var(--safe-bottom));
+  display: flex;
+  justify-content: center;
+}
+
+.play-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-10);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: 
+    0 4px 14px rgba(99, 102, 241, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all var(--transition-base);
+  min-height: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.play-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  border-radius: inherit;
+}
+
+.play-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.play-btn-icon {
+  font-size: 1.4em;
+}
+
+/* ============================================
+   MENU SCREEN
+   ============================================ */
 #menu {
-  background: var(--bg-menu);
-  gap: 15px;
-  padding-top: calc(20px + var(--safe-top));
+  gap: var(--space-6);
 }
 
 .menu-header {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: var(--space-2);
 }
 
 .menu-title {
-  font-family: var(--font-fun);
-  font-size: clamp(1.8rem, 7vw, 2.8rem);
-  color: white;
-  text-shadow: 3px 3px 0 var(--secondary), -1px -1px 0 #333;
-  margin-bottom: 5px;
+  font-size: clamp(var(--font-size-2xl), 8vw, var(--font-size-4xl));
+  font-weight: 800;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-2);
 }
 
 .menu-subtitle {
-  font-family: 'Patrick Hand', cursive;
-  font-size: clamp(1rem, 4vw, 1.4rem);
-  color: rgba(255,255,255,0.9);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  font-weight: 500;
 }
 
+/* Game Cards Grid */
 .games-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
   width: 100%;
-  max-width: 500px;
-  padding: 10px;
+  max-width: 420px;
+}
+
+@media (min-width: 768px) {
+  .games-grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 900px;
+  }
 }
 
 .game-card {
-  background: white;
-  border-radius: 25px;
-  padding: 20px 15px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6) var(--space-4);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-3);
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15), 0 4px 0 rgba(0,0,0,0.1);
-  border: 3px solid transparent;
-  min-height: 140px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  min-height: 160px;
 }
 
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.game-card.zoo::before { background: var(--color-zoo); }
+.game-card.numbers::before { background: var(--color-numbers); }
+.game-card.geo::before { background: var(--color-geo); }
+.game-card.colors::before { background: var(--color-colors); }
+
 .game-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2), 0 6px 0 rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
 }
 
 .game-card:active {
-  transform: scale(0.95);
+  transform: scale(0.98);
 }
 
-.game-card.zoo { border-color: #FFB74D; background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%); }
-.game-card.numbers { border-color: #64B5F6; background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); }
-.game-card.geo { border-color: #81C784; background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%); }
+.game-card:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
 
 .game-icon {
-  font-size: clamp(2.5rem, 10vw, 3.5rem);
-  animation: bounce 2s ease-in-out infinite;
+  font-size: clamp(2.5rem, 12vw, 3.5rem);
+  line-height: 1;
 }
 
-.game-card:nth-child(2) .game-icon { animation-delay: 0.3s; }
-.game-card:nth-child(3) .game-icon { animation-delay: 0.6s; }
+.game-card.zoo .game-icon { animation: iconBounce 2.5s ease-in-out infinite; }
+.game-card.numbers .game-icon { animation: iconBounce 2.5s ease-in-out infinite 0.4s; }
+.game-card.geo .game-icon { animation: iconBounce 2.5s ease-in-out infinite 0.8s; }
+.game-card.colors .game-icon { animation: iconBounce 2.5s ease-in-out infinite 1.2s; }
 
-@keyframes bounce {
+@keyframes iconBounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-6px); }
 }
 
 .game-title {
-  font-family: var(--font-fun);
-  font-size: clamp(1rem, 4vw, 1.3rem);
-  color: #333;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-text-primary);
   text-align: center;
 }
 
 .game-desc {
-  font-size: clamp(0.7rem, 2.5vw, 0.85rem);
-  color: #666;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
   text-align: center;
+  line-height: 1.4;
 }
 
-.game-plays {
-  font-size: 0.7rem;
-  color: #999;
+.game-stats {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: var(--space-1);
 }
 
-/* Selector de dificultad */
+/* Difficulty Selector */
 .diff-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-top: 10px;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
 }
 
 .diff-label {
-  font-family: 'Patrick Hand', cursive;
-  font-size: clamp(1rem, 3.5vw, 1.2rem);
-  color: white;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: 600;
 }
 
 .diff-switch {
   display: flex;
-  gap: 10px;
-  background: rgba(255,255,255,0.2);
-  padding: 5px;
-  border-radius: 30px;
+  background: var(--color-bg-secondary);
+  padding: var(--space-1);
+  border-radius: var(--radius-lg);
+  gap: var(--space-1);
 }
 
 .diff-btn {
-  padding: 12px 24px;
-  border-radius: 25px;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
   border: none;
   background: transparent;
-  color: white;
-  font-family: var(--font-fun);
-  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
-  min-height: 48px;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all var(--transition-fast);
+  min-height: 44px;
 }
 
 .diff-btn.selected {
-  background: white;
-  color: var(--secondary);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  background: var(--color-text-inverse);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-md);
 }
 
-.diff-btn:active {
-  transform: scale(0.95);
+.diff-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
-/* Indicador de dificultad actual */
-.current-diff-indicator {
+/* Current Difficulty Indicator */
+.current-diff-badge {
   position: absolute;
-  top: calc(15px + var(--safe-top));
-  right: 15px;
-  background: rgba(255,255,255,0.9);
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-family: var(--font-fun);
-  font-size: 0.8rem;
-  color: #333;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  top: calc(var(--space-4) + var(--safe-top));
+  right: var(--space-4);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--glass-border);
 }
 
-/* ========================================
-   PANTALLA 3: JUEGO
-   ======================================== */
+/* ============================================
+   GAME SCREEN
+   ============================================ */
 #game {
-  background: var(--bg-grad);
-  padding: 10px;
-  padding-top: calc(10px + var(--safe-top));
+  background: transparent;
 }
 
-#top-bar {
+/* Top Bar */
+.top-bar {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 0;
+  padding: var(--space-2) 0;
   z-index: 20;
   flex-shrink: 0;
 }
 
 .back-btn {
-  font-size: 1.3rem;
-  background: rgba(255,255,255,0.2);
-  border: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  color: white;
-  cursor: pointer;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.back-btn:hover {
+  background: var(--color-text-inverse);
+  box-shadow: var(--shadow-md);
 }
 
 .back-btn:active {
-  background: rgba(255,255,255,0.4);
+  transform: scale(0.95);
 }
 
 .game-info {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-3);
 }
 
 .diff-badge {
-  background: rgba(255,255,255,0.2);
-  padding: 5px 12px;
-  border-radius: 15px;
-  font-size: 0.75rem;
-  color: white;
-  font-weight: bold;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--glass-border);
 }
 
-#progress-bar {
+.progress-bar {
   display: flex;
-  gap: 4px;
-  height: 30px;
+  gap: var(--space-2);
   align-items: center;
-  flex-wrap: wrap;
-  justify-content: flex-end;
 }
 
 .star {
-  font-size: clamp(1.2rem, 4vw, 1.5rem);
-  color: rgba(255,255,255,0.3);
-  transition: 0.3s;
+  font-size: var(--font-size-xl);
+  color: var(--color-bg-tertiary);
+  transition: all var(--transition-spring);
 }
 
 .star.active {
-  color: var(--primary);
-  transform: scale(1.3);
-  text-shadow: 0 0 10px var(--primary);
-  animation: starPop 0.5s ease-out;
+  color: var(--color-warning);
+  transform: scale(1.2);
+  filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.4));
+  animation: starPop var(--transition-spring);
 }
 
 @keyframes starPop {
-  0% { transform: scale(0); }
-  50% { transform: scale(1.5); }
-  100% { transform: scale(1.3); }
+  0% { transform: scale(0) rotate(-180deg); }
+  70% { transform: scale(1.4) rotate(10deg); }
+  100% { transform: scale(1.2) rotate(0deg); }
 }
 
-/* --- TUTORIAL OVERLAY --- */
-.tutorial-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  padding: 20px;
-}
-
-.tutorial-overlay.active {
-  display: flex;
-  animation: fadeIn 0.3s;
-}
-
-.tutorial-box {
-  background: white;
-  border-radius: 25px;
-  padding: 30px;
-  max-width: 350px;
-  text-align: center;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-}
-
-.tutorial-icon {
-  font-size: 4rem;
-  margin-bottom: 15px;
-}
-
-.tutorial-title {
-  font-family: var(--font-fun);
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.tutorial-text {
-  font-size: 1rem;
-  color: #666;
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-
-.tutorial-steps {
-  text-align: left;
-  margin-bottom: 20px;
-}
-
-.tutorial-step {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-  font-size: 0.95rem;
-}
-
-.step-num {
-  background: var(--blue);
-  color: white;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-fun);
-  font-size: 0.9rem;
-  flex-shrink: 0;
-}
-
-.tutorial-btn {
-  background: var(--accent);
-  color: white;
-  padding: 15px 40px;
-  border: none;
-  border-radius: 30px;
-  font-family: var(--font-fun);
-  font-size: 1.1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 0 #00C853;
-}
-
-.tutorial-btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 #00C853;
-}
-
-/* --- MEMORY STYLES --- */
-#memory-area {
+/* Game Areas */
+#memory-area,
+#geo-area,
+#colors-area {
   display: none;
   width: 100%;
+  flex: 1;
   flex-direction: column;
   align-items: center;
-  flex: 1;
   justify-content: center;
   overflow: hidden;
+  padding-top: var(--space-4);
 }
 
-.grid {
+#memory-area.active,
+#geo-area.active,
+#colors-area.active {
+  display: flex;
+}
+
+/* Memory Grid */
+.memory-grid {
   display: grid;
-  gap: 8px;
-  padding: 5px;
+  gap: var(--space-3);
+  padding: var(--space-4);
   width: 100%;
   max-width: 500px;
   justify-content: center;
-  max-height: calc(100dvh - 150px);
 }
 
-.card {
-  aspect-ratio: 1/1;
+.memory-card {
+  aspect-ratio: 1;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.6s;
-  min-width: 60px;
-  min-height: 60px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  min-width: 70px;
+  min-height: 70px;
 }
 
-.card.flipped { transform: rotateY(180deg); }
+.memory-card.flipped {
+  transform: rotateY(180deg);
+}
 
-.face {
+.memory-card.matched {
+  pointer-events: none;
+}
+
+.card-face {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   backface-visibility: hidden;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(1.5rem, 8vw, 3rem);
-  border: 3px solid white;
-  background: white;
-  box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+  font-size: clamp(2rem, 10vw, 3.5rem);
+  box-shadow: var(--shadow-md);
+  border: 3px solid transparent;
 }
 
-.front {
-  transform: rotateY(0deg);
-  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+.card-front {
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+  border-color: var(--glass-border);
 }
 
-.back {
+.card-front::after {
+  content: '?';
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-weight: 700;
+  color: var(--color-text-tertiary);
+}
+
+.card-back {
+  background: var(--color-text-inverse);
   transform: rotateY(180deg);
-  color: #333;
+  border-color: var(--color-primary-light);
 }
 
-.card.matched .back {
-  background: #fffde7;
-  border-color: var(--accent);
-  animation: matchPop 0.4s;
+.memory-card.matched .card-back {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-color: var(--color-warning);
+  animation: matchPulse 0.4s ease-out;
 }
 
-@keyframes matchPop {
+@keyframes matchPulse {
   0% { transform: rotateY(180deg) scale(1); }
-  50% { transform: rotateY(180deg) scale(1.1); }
+  50% { transform: rotateY(180deg) scale(1.08); }
   100% { transform: rotateY(180deg) scale(1); }
 }
 
-/* --- PALABRA BILINGÜE (VOCABULARY POPUP) --- */
+/* Geo Game */
+.geo-container {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) and (orientation: landscape) {
+  .geo-container {
+    flex-direction: row;
+  }
+}
+
+.flags-container {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+  align-content: center;
+  padding: var(--space-4);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border);
+}
+
+.flag-box {
+  width: clamp(75px, 22vw, 100px);
+  aspect-ratio: 3/4;
+  background: var(--color-text-inverse);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--glass-border);
+  position: relative;
+}
+
+.flag-box:hover:not(.solved) {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.flag-box:active:not(.solved) {
+  transform: scale(0.98);
+}
+
+.flag-emoji {
+  font-size: clamp(2.5rem, 10vw, 4rem);
+  line-height: 1;
+}
+
+.flag-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.flag-box.solved {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  border-color: var(--color-success);
+}
+
+.flag-box.solved .flag-emoji {
+  transform: scale(0.7);
+  opacity: 0.5;
+}
+
+.flag-box .solved-label {
+  display: none;
+  position: absolute;
+  bottom: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--color-success);
+}
+
+.flag-box.solved .solved-label {
+  display: block;
+}
+
+.flag-box.shake {
+  animation: shake 0.4s ease-out;
+  border-color: var(--color-error);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+.names-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+  padding: var(--space-4);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border);
+}
+
+.name-btn {
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-text-inverse);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--glass-border);
+  transition: all var(--transition-fast);
+  min-height: 44px;
+}
+
+.name-btn:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-md);
+}
+
+.name-btn.selected {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-text-inverse);
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+}
+
+.name-btn.hidden {
+  opacity: 0;
+  transform: scale(0);
+  pointer-events: none;
+  position: absolute;
+}
+
+/* Colors Game */
+.colors-container {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-4);
+}
+
+.colors-instruction {
+  text-align: center;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  padding: var(--space-4);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border);
+}
+
+.colors-instruction .target-emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.colors-instruction .target-word {
+  color: var(--color-primary);
+}
+
+.color-palette {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border);
+}
+
+.color-btn {
+  width: clamp(60px, 18vw, 80px);
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  border: 3px solid var(--glass-border);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.color-btn:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.color-btn.correct {
+  border-color: var(--color-success);
+  animation: correctPulse 0.5s ease-out;
+}
+
+.color-btn.wrong {
+  animation: shake 0.4s ease-out;
+}
+
+@keyframes correctPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* ============================================
+   VOCABULARY POPUP (CON VOZ)
+   ============================================ */
 .vocab-popup {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  background: white;
-  border-radius: 20px;
-  padding: 20px 30px;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: var(--color-text-inverse);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
   text-align: center;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  box-shadow: var(--shadow-xl);
   z-index: 90;
   pointer-events: none;
   opacity: 0;
-  transition: transform 0.3s, opacity 0.3s;
+  transition: all var(--transition-base);
+  border: 1px solid var(--glass-border);
 }
 
 .vocab-popup.show {
@@ -577,261 +960,226 @@ body {
 }
 
 .vocab-emoji {
-  font-size: 3rem;
-  margin-bottom: 10px;
+  font-size: 4rem;
+  margin-bottom: var(--space-4);
 }
 
-.vocab-spanish {
-  font-family: var(--font-fun);
-  font-size: 1.5rem;
-  color: #1976D2;
-  margin-bottom: 5px;
+.vocab-word {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
 }
 
-.vocab-english {
-  font-family: var(--font-fun);
-  font-size: 1.3rem;
-  color: #43A047;
+.vocab-translation {
+  font-size: var(--font-size-lg);
+  color: var(--color-accent);
+  font-weight: 600;
 }
 
-.vocab-flag {
+.vocab-langs {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 8px;
-  font-size: 1.2rem;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
 }
 
-/* --- GEO STYLES --- */
-#geo-area {
+/* ============================================
+   TUTORIAL OVERLAY
+   ============================================ */
+.tutorial-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(8px);
   display: none;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  flex: 1;
-  overflow: hidden;
-}
-
-.flags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  align-content: center;
-  flex: 1;
-  padding: 10px;
-  background: rgba(0,0,0,0.1);
-  border-radius: 20px;
-  margin-bottom: 10px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.flag-box {
-  width: clamp(70px, 22vw, 90px);
-  height: clamp(85px, 28vw, 110px);
-  background: rgba(255,255,255,0.2);
-  border: 3px solid rgba(255,255,255,0.5);
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: 0.3s;
-  position: relative;
-  cursor: pointer;
-  min-width: 70px;
-  min-height: 85px;
+  z-index: 100;
+  padding: var(--space-6);
 }
 
-.flag-emoji {
-  font-size: clamp(2rem, 8vw, 3.5rem);
-  transition: 0.3s;
-  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+.tutorial-overlay.active {
+  display: flex;
+  animation: fadeIn var(--transition-base);
 }
 
-.flag-label {
-  font-size: clamp(0.55rem, 2vw, 0.7rem);
-  color: white;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-top: 3px;
-  text-shadow: 1px 1px 1px black;
-  text-align: center;
-  padding: 0 2px;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.flag-box.shake { animation: shake 0.4s; border-color: var(--secondary); }
-.flag-box.solved { background: white; border-color: var(--accent); transform: scale(1.05); }
-.flag-box.solved .flag-emoji { transform: scale(0.6) translateY(-15px); opacity: 0.5; }
-.flag-box.solved .solved-text { display: block; animation: pop 0.5s; }
-
-.solved-text {
-  display: none;
-  position: absolute;
-  bottom: 8px;
+.tutorial-box {
+  background: var(--color-text-inverse);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  max-width: 360px;
   width: 100%;
   text-align: center;
-  color: #333;
-  font-family: var(--font-fun);
-  font-size: clamp(0.7rem, 2.5vw, 0.9rem);
-  line-height: 1;
-  padding: 0 2px;
+  box-shadow: var(--shadow-xl);
 }
 
-.names-container {
-  min-height: 120px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 25px 25px 0 0;
-  backdrop-filter: blur(10px);
+.tutorial-icon {
+  font-size: 4rem;
+  margin-bottom: var(--space-4);
+}
+
+.tutorial-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.tutorial-steps {
+  text-align: left;
+  margin-bottom: var(--space-6);
+}
+
+.tutorial-step {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+.step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  display: flex;
+  align-items: center;
   justify-content: center;
-  padding: 15px;
-  padding-bottom: calc(15px + var(--safe-bottom));
-  align-items: flex-start;
-  align-content: flex-start;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
   flex-shrink: 0;
 }
 
-.name-btn {
-  background: white;
-  border-radius: 30px;
-  padding: 10px 16px;
-  font-family: var(--font-fun);
-  font-size: clamp(0.9rem, 3.5vw, 1.2rem);
-  color: #333;
-  box-shadow: 0 4px 0 rgba(0,0,0,0.2);
-  border: 3px solid white;
-  transition: 0.2s;
+.tutorial-btn {
+  width: 100%;
+  padding: var(--space-4) var(--space-6);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
   cursor: pointer;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+  transition: all var(--transition-fast);
+  min-height: 52px;
 }
 
-.name-btn.selected {
-  transform: scale(1.05);
-  background: #FFF9C4;
-  border-color: var(--primary);
-  box-shadow: 0 0 15px var(--primary);
-  color: black;
+.tutorial-btn:active {
+  transform: translateY(0);
 }
 
-.name-btn.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0);
-  position: absolute;
-}
-
-@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
-@keyframes pop { 0%{transform:scale(0)} 70%{transform:scale(1.2)} 100%{transform:scale(1)} }
-
-/* ========================================
-   PANTALLA 4: RESUMEN
-   ======================================== */
+/* ============================================
+   SUMMARY SCREEN
+   ============================================ */
 #summary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background: transparent;
   text-align: center;
-  color: white;
-  gap: 15px;
-  padding: 20px;
+  gap: var(--space-5);
   overflow-y: auto;
 }
 
-.summary-header {
-  margin-bottom: 10px;
-}
-
 .summary-trophy {
-  font-size: clamp(4rem, 15vw, 6rem);
-  animation: trophyBounce 1s ease-out;
+  font-size: clamp(4rem, 20vw, 7rem);
+  animation: trophyEnter 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes trophyBounce {
-  0% { transform: scale(0) rotate(-20deg); }
+@keyframes trophyEnter {
+  0% { transform: scale(0) rotate(-30deg); opacity: 0; }
   60% { transform: scale(1.2) rotate(10deg); }
-  100% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
 .summary-title {
-  font-family: var(--font-fun);
-  font-size: clamp(1.8rem, 7vw, 2.5rem);
-  text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
-  margin-bottom: 5px;
+  font-size: clamp(var(--font-size-2xl), 8vw, var(--font-size-4xl));
+  font-weight: 800;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
 }
 
 .summary-subtitle {
-  font-family: 'Patrick Hand', cursive;
-  font-size: clamp(1rem, 4vw, 1.3rem);
-  opacity: 0.9;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
 }
 
-/* Estrellas conseguidas */
 .summary-stars {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 15px 0;
+  gap: var(--space-2);
+  flex-wrap: wrap;
 }
 
 .summary-star {
-  font-size: clamp(2rem, 8vw, 3rem);
+  font-size: clamp(2rem, 8vw, 3.5rem);
   animation: starAppear 0.5s ease-out backwards;
 }
 
 .summary-star:nth-child(1) { animation-delay: 0.2s; }
-.summary-star:nth-child(2) { animation-delay: 0.4s; }
-.summary-star:nth-child(3) { animation-delay: 0.6s; }
-.summary-star:nth-child(4) { animation-delay: 0.8s; }
-.summary-star:nth-child(5) { animation-delay: 1s; }
-.summary-star:nth-child(6) { animation-delay: 1.2s; }
+.summary-star:nth-child(2) { animation-delay: 0.3s; }
+.summary-star:nth-child(3) { animation-delay: 0.4s; }
+.summary-star:nth-child(4) { animation-delay: 0.5s; }
+.summary-star:nth-child(5) { animation-delay: 0.6s; }
+.summary-star:nth-child(6) { animation-delay: 0.7s; }
 
 @keyframes starAppear {
   0% { transform: scale(0) rotate(-180deg); opacity: 0; }
   100% { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
-/* Palabras aprendidas */
+/* Words Learned */
+.summary-words-section {
+  width: 100%;
+  max-width: 400px;
+}
+
 .summary-words-title {
-  font-family: var(--font-fun);
-  font-size: clamp(1rem, 4vw, 1.3rem);
-  margin-bottom: 10px;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--space-2);
 }
 
 .summary-words-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: var(--space-3);
   justify-content: center;
-  max-width: 400px;
-  margin: 0 auto 20px;
 }
 
 .summary-word {
-  background: rgba(255,255,255,0.2);
-  border-radius: 15px;
-  padding: 10px 15px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
-  animation: wordSlide 0.5s ease-out backwards;
+  gap: var(--space-1);
+  border: 1px solid var(--glass-border);
+  animation: wordSlide 0.4s ease-out backwards;
 }
 
-.summary-word:nth-child(1) { animation-delay: 0.3s; }
-.summary-word:nth-child(2) { animation-delay: 0.4s; }
-.summary-word:nth-child(3) { animation-delay: 0.5s; }
-.summary-word:nth-child(4) { animation-delay: 0.6s; }
-.summary-word:nth-child(5) { animation-delay: 0.7s; }
-.summary-word:nth-child(6) { animation-delay: 0.8s; }
+.summary-word:nth-child(1) { animation-delay: 0.4s; }
+.summary-word:nth-child(2) { animation-delay: 0.5s; }
+.summary-word:nth-child(3) { animation-delay: 0.6s; }
+.summary-word:nth-child(4) { animation-delay: 0.7s; }
+.summary-word:nth-child(5) { animation-delay: 0.8s; }
+.summary-word:nth-child(6) { animation-delay: 0.9s; }
 
 @keyframes wordSlide {
   0% { transform: translateY(20px); opacity: 0; }
@@ -839,76 +1187,84 @@ body {
 }
 
 .summary-word-emoji {
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 .summary-word-es {
-  font-family: var(--font-fun);
-  font-size: 0.85rem;
-  color: #FFF59D;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary);
 }
 
 .summary-word-en {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.8);
+  font-size: var(--font-size-xs);
+  color: var(--color-accent);
 }
 
-/* Mensaje motivacional */
+/* Message Card */
 .summary-message {
-  background: rgba(255,255,255,0.15);
-  border-radius: 20px;
-  padding: 15px 20px;
-  margin-bottom: 15px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
   max-width: 350px;
+  border: 1px solid var(--glass-border);
 }
 
 .summary-message-text {
-  font-family: 'Patrick Hand', cursive;
-  font-size: clamp(1rem, 4vw, 1.2rem);
-  line-height: 1.4;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
 }
 
-/* Botones de acción */
+/* Action Buttons */
 .summary-buttons {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-3);
   width: 100%;
-  max-width: 300px;
+  max-width: 280px;
 }
 
 .summary-btn {
-  padding: 15px 30px;
-  border-radius: 30px;
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-lg);
   border: none;
-  font-family: var(--font-fun);
-  font-size: clamp(1rem, 4vw, 1.2rem);
+  font-size: var(--font-size-base);
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 54px;
-  transition: transform 0.2s;
-}
-
-.summary-btn:active {
-  transform: scale(0.95);
+  gap: var(--space-2);
+  min-height: 52px;
+  transition: all var(--transition-fast);
 }
 
 .summary-btn.primary {
-  background: white;
-  color: var(--secondary);
-  box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-text-inverse);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+}
+
+.summary-btn.primary:active {
+  transform: scale(0.98);
 }
 
 .summary-btn.secondary {
-  background: rgba(255,255,255,0.2);
-  color: white;
-  border: 2px solid white;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  color: var(--color-text-primary);
+  border: 2px solid var(--glass-border);
 }
 
-/* --- CONFETI --- */
+.summary-btn.secondary:active {
+  transform: scale(0.98);
+}
+
+/* ============================================
+   CONFETTI
+   ============================================ */
 .confetti-container {
   position: fixed;
   inset: 0;
@@ -930,89 +1286,150 @@ body {
   100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
 }
 
-/* --- RESPONSIVE --- */
-@media screen and (max-height: 600px) {
-  .portada-image {
-    max-height: 75vh;
-  }
-  
-  .play-btn-portada {
-    bottom: 5%;
-    padding: 12px 35px;
+/* ============================================
+   RESPONSIVE BREAKPOINTS (MEJORADOS)
+   ============================================ */
+
+/* Small phones */
+@media screen and (max-width: 359px) {
+  :root {
+    --font-size-base: 0.875rem;
   }
   
   .games-grid {
-    gap: 10px;
+    gap: var(--space-3);
   }
   
   .game-card {
-    padding: 15px 10px;
-    min-height: 120px;
+    padding: var(--space-4) var(--space-3);
+    min-height: 140px;
   }
   
-  .summary-words-container {
-    max-height: 150px;
-    overflow-y: auto;
+  .game-icon {
+    font-size: 2rem;
+  }
+  
+  .game-title {
+    font-size: var(--font-size-base);
+  }
+  
+  .game-desc {
+    font-size: var(--font-size-xs);
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 1024px) {
+/* Standard phones portrait */
+@media screen and (min-width: 360px) and (max-width: 479px) {
+  .memory-grid {
+    gap: var(--space-2);
+  }
+  
+  .memory-card {
+    min-width: 65px;
+    min-height: 65px;
+  }
+}
+
+/* Large phones and small tablets */
+@media screen and (min-width: 480px) and (max-width: 767px) {
   .games-grid {
+    max-width: 480px;
+  }
+  
+  .game-card {
+    padding: var(--space-6);
+  }
+}
+
+/* Tablets portrait */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .screen {
+    padding: var(--space-6);
+  }
+  
+  .games-grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 700px;
+  }
+  
+  .memory-grid {
+    max-width: 550px;
+  }
+}
+
+/* Tablets landscape and small desktops */
+@media screen and (min-width: 1024px) {
+  .screen {
+    padding: var(--space-8);
+  }
+  
+  .games-grid {
+    max-width: 900px;
+    gap: var(--space-5);
+  }
+  
+  .game-card {
+    padding: var(--space-8);
+  }
+  
+  .memory-grid {
     max-width: 600px;
   }
-  
-  .game-card {
-    padding: 25px 20px;
-  }
 }
 
-@media screen and (max-height: 500px) and (orientation: landscape) {
-  #menu {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-  
-  .menu-header {
-    width: 100%;
+/* Large desktops */
+@media screen and (min-width: 1440px) {
+  :root {
+    --font-size-base: 1.125rem;
   }
   
   .games-grid {
-    flex-direction: row;
+    max-width: 1100px;
+  }
+}
+
+/* Landscape phones */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .portada-image {
+    max-height: 50vh;
+  }
+  
+  .portada-button-wrapper {
+    padding: var(--space-4);
+  }
+  
+  .games-grid {
+    grid-template-columns: repeat(4, 1fr);
     max-width: none;
   }
   
-  #geo-area {
-    flex-direction: row;
-  }
-  
-  .flags-container {
-    flex: 2;
-    margin-bottom: 0;
-    margin-right: 10px;
-  }
-  
-  .names-container {
-    flex: 1;
-    border-radius: 20px;
-    min-height: auto;
-    height: 100%;
-    flex-direction: column;
-    padding-bottom: 15px;
+  .game-card {
+    min-height: 120px;
+    padding: var(--space-3);
   }
   
   #summary {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-start;
+    gap: var(--space-4);
   }
   
   .summary-header {
-    width: 40%;
+    flex: 0 0 100%;
+  }
+  
+  .summary-words-section,
+  .summary-message,
+  .summary-buttons {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
   }
 }
 
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -1020,33 +1437,77 @@ body {
     transition-duration: 0.01ms !important;
   }
   
-  .particle {
-    display: none;
+  .orb {
+    animation: none;
+  }
+  
+  .bg-gradient {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(0, 0, 0, 0.3);
+  }
+  
+  .game-card,
+  .name-btn,
+  .object-btn,
+  .color-btn {
+    border-width: 3px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .screen:not(.active) {
+    display: none !important;
+  }
+  
+  .confetti-container,
+  .orbs-container,
+  .bg-pattern {
+    display: none !important;
   }
 }
 </style>
 </head>
 <body>
 
-<div id="bgParticles"></div>
+<!-- Animated Background -->
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+<div class="orbs-container">
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+</div>
 
-<!-- PANTALLA 1: PORTADA -->
+<!-- PORTADA SCREEN -->
 <div id="portada" class="screen active">
-  <div class="portada-container">
-    <img src="portada.png" alt="Sofía y Noa - Buscad los Animales, los Números y el Mundo" class="portada-image">
-    <button class="play-btn-portada" onclick="goToMenu()" aria-label="Empezar la aventura">
-      ¡JUGAR! ✈️
-    </button>
+  <div class="portada-content">
+    <div class="portada-image-wrapper">
+      <img src="portada.png" alt="Sofía y Noa - Aprende Jugando" class="portada-image">
+    </div>
+    <div class="portada-button-wrapper">
+      <button class="play-btn" onclick="goToMenu()" aria-label="Comenzar a jugar">
+        <span class="play-btn-icon">▶</span>
+        <span>JUGAR</span>
+      </button>
+    </div>
   </div>
 </div>
 
-<!-- PANTALLA 2: MENÚ DE JUEGOS -->
+<!-- MENU SCREEN -->
 <div id="menu" class="screen">
-  <div class="current-diff-indicator" id="diffIndicator">😊 Fácil</div>
+  <div class="current-diff-badge" id="diffIndicator">Nivel Fácil</div>
   
   <div class="menu-header">
-    <h1 class="menu-title">¡Elige tu Aventura!</h1>
-    <p class="menu-subtitle">¿Qué quieres aprender hoy?</p>
+    <h1 class="menu-title">Elige tu Aventura</h1>
+    <p class="menu-subtitle">Selecciona un juego para comenzar</p>
   </div>
   
   <div class="games-grid">
@@ -1054,29 +1515,36 @@ body {
       <div class="game-icon">🦁</div>
       <div class="game-title">El Gran Zoo</div>
       <div class="game-desc">Encuentra los animales iguales</div>
-      <div class="game-plays" id="zooPlays">🎮 0 veces</div>
+      <div class="game-stats" id="zooPlays">0 partidas</div>
     </div>
     
     <div class="game-card numbers" onclick="initGame('numbers')" role="button" tabindex="0" aria-label="Jugar Números">
       <div class="game-icon">🔢</div>
       <div class="game-title">Números</div>
-      <div class="game-desc">Aprende a contar jugando</div>
-      <div class="game-plays" id="numbersPlays">🎮 0 veces</div>
+      <div class="game-desc">Aprende a contar</div>
+      <div class="game-stats" id="numbersPlays">0 partidas</div>
     </div>
     
-    <div class="game-card geo" onclick="initGame('geo')" role="button" tabindex="0" aria-label="Jugar Capitales">
-      <div class="game-icon">✈️</div>
-      <div class="game-title">Capitales</div>
-      <div class="game-desc">Viaja por el mundo</div>
-      <div class="game-plays" id="geoPlays">🎮 0 veces</div>
+    <div class="game-card geo" onclick="initGame('geo')" role="button" tabindex="0" aria-label="Jugar Viaja por el Mundo">
+      <div class="game-icon">🌍</div>
+      <div class="game-title">Viaja</div>
+      <div class="game-desc">Descubre capitales</div>
+      <div class="game-stats" id="geoPlays">0 partidas</div>
+    </div>
+    
+    <div class="game-card colors" onclick="initGame('colors')" role="button" tabindex="0" aria-label="Jugar Colores Mágicos">
+      <div class="game-icon">🎨</div>
+      <div class="game-title">Colores</div>
+      <div class="game-desc">Asocia los colores</div>
+      <div class="game-stats" id="colorsPlays">0 partidas</div>
     </div>
   </div>
   
   <div class="diff-container">
-    <span class="diff-label">Nivel de dificultad:</span>
+    <span class="diff-label">Nivel de dificultad</span>
     <div class="diff-switch" role="group" aria-label="Selección de dificultad">
-      <button class="diff-btn selected" id="btnEasy" onclick="setDiff('easy')" aria-pressed="true">😊 Fácil</button>
-      <button class="diff-btn" id="btnHard" onclick="setDiff('hard')" aria-pressed="false">⚡ Reto</button>
+      <button class="diff-btn selected" id="btnEasy" onclick="setDiff('easy')" aria-pressed="true">Fácil</button>
+      <button class="diff-btn" id="btnHard" onclick="setDiff('hard')" aria-pressed="false">Reto</button>
     </div>
   </div>
 </div>
@@ -1084,78 +1552,99 @@ body {
 <!-- TUTORIAL OVERLAY -->
 <div class="tutorial-overlay" id="tutorialOverlay">
   <div class="tutorial-box">
-    <div class="tutorial-icon">🗺️</div>
-    <h2 class="tutorial-title">¿Cómo jugar?</h2>
-    <p class="tutorial-text">¡Vamos a viajar por el mundo!</p>
-    <div class="tutorial-steps">
+    <div class="tutorial-icon" id="tutorialIcon">🎮</div>
+    <h2 class="tutorial-title" id="tutorialTitle">Cómo jugar</h2>
+    <div class="tutorial-steps" id="tutorialSteps">
       <div class="tutorial-step">
         <span class="step-num">1</span>
-        <span>Toca una <strong>capital</strong> de abajo</span>
+        <span>Toca una carta para voltearla</span>
       </div>
       <div class="tutorial-step">
         <span class="step-num">2</span>
-        <span>Luego toca la <strong>bandera</strong> de su país</span>
+        <span>Busca la pareja igual</span>
       </div>
       <div class="tutorial-step">
         <span class="step-num">3</span>
-        <span>¡Encuentra todas las parejas!</span>
+        <span>¡Encuéntralas todas!</span>
       </div>
     </div>
-    <button class="tutorial-btn" onclick="closeTutorial()">¡Entendido! 👍</button>
+    <button class="tutorial-btn" onclick="closeTutorial()">¡Entendido!</button>
   </div>
 </div>
 
-<!-- PANTALLA 3: JUEGO -->
+<!-- GAME SCREEN -->
 <div id="game" class="screen">
-  <div id="top-bar">
-    <button class="back-btn" onclick="goToMenu()" aria-label="Volver al menú">❮</button>
+  <div class="top-bar">
+    <button class="back-btn" onclick="goToMenu()" aria-label="Volver al menú">←</button>
     <div class="game-info">
-      <span class="diff-badge" id="gameDiffBadge">😊 Fácil</span>
-      <div id="progress-bar" role="progressbar" aria-label="Progreso del juego"></div>
+      <span class="diff-badge" id="gameDiffBadge">Fácil</span>
+      <div class="progress-bar" id="progress-bar" role="progressbar" aria-label="Progreso del juego"></div>
     </div>
   </div>
 
+  <!-- Memory Game Area -->
   <div id="memory-area">
-    <div class="grid" id="grid" role="grid" aria-label="Tablero de memoria"></div>
+    <div class="memory-grid" id="memory-grid" role="grid" aria-label="Tablero de memoria"></div>
   </div>
 
+  <!-- Geo Game Area -->
   <div id="geo-area">
-    <div id="flags-box" class="flags-container" role="list" aria-label="Banderas de países"></div>
-    <div id="names-box" class="names-container" role="list" aria-label="Nombres de capitales"></div>
+    <div class="geo-container">
+      <div id="flags-box" class="flags-container" role="list" aria-label="Banderas de países"></div>
+      <div id="names-box" class="names-container" role="list" aria-label="Nombres de capitales"></div>
+    </div>
+  </div>
+
+  <!-- Colors Game Area -->
+  <div id="colors-area">
+    <div class="colors-container">
+      <div class="colors-instruction" id="colors-instruction">
+        <span class="target-emoji" id="target-emoji">🍎</span>
+        <span>¿De qué color es?</span>
+        <span class="target-word" id="target-word">la manzana</span>
+      </div>
+      <div class="color-palette" id="color-palette" role="list" aria-label="Paleta de colores"></div>
+    </div>
   </div>
 </div>
 
 <!-- VOCABULARY POPUP -->
 <div class="vocab-popup" id="vocabPopup">
   <div class="vocab-emoji" id="vocabEmoji"></div>
-  <div class="vocab-spanish" id="vocabSpanish"></div>
-  <div class="vocab-english" id="vocabEnglish"></div>
-  <div class="vocab-flag" id="vocabFlag"></div>
+  <div class="vocab-word" id="vocabSpanish"></div>
+  <div class="vocab-translation" id="vocabEnglish"></div>
+  <div class="vocab-langs" id="vocabLangs">
+    <span>Español</span>
+    <span>•</span>
+    <span>English</span>
+  </div>
 </div>
 
-<!-- PANTALLA 4: RESUMEN -->
+<!-- SUMMARY SCREEN -->
 <div id="summary" class="screen">
   <div class="summary-header">
     <div class="summary-trophy">🏆</div>
-    <h1 class="summary-title">¡INCREÍBLE!</h1>
-    <p class="summary-subtitle" id="summarySubtitle">Sofía y Noa están muy orgullosas de ti</p>
+    <h1 class="summary-title">¡Fantástico!</h1>
+    <p class="summary-subtitle" id="summarySubtitle">Has completado el juego</p>
   </div>
   
   <div class="summary-stars" id="summaryStars"></div>
   
-  <div class="summary-words-title">
-    <span>📚</span>
-    <span>Palabras aprendidas:</span>
+  <div class="summary-words-section">
+    <div class="summary-words-title">
+      <span>📚</span>
+      <span>Palabras aprendidas</span>
+    </div>
+    <div class="summary-words-container" id="summaryWords"></div>
   </div>
-  <div class="summary-words-container" id="summaryWords"></div>
   
   <div class="summary-message">
-    <p class="summary-message-text" id="summaryMessage">¡Has aprendido mucho hoy! Cada vez eres más lista. 🌟</p>
+    <p class="summary-message-text" id="summaryMessage">¡Excelente trabajo! Sigue aprendiendo cada día.</p>
   </div>
   
   <div class="summary-buttons">
     <button class="summary-btn primary" onclick="playAgain()">🔄 Jugar otra vez</button>
-    <button class="summary-btn secondary" onclick="goToMenu()">🏠 Volver al menú</button>
+    <button class="summary-btn secondary" onclick="goToMenu()">🏠 Menú principal</button>
   </div>
 </div>
 
@@ -1163,134 +1652,134 @@ body {
 <div class="confetti-container" id="confettiContainer"></div>
 
 <script>
-// ========================================
-// DATOS DEL JUEGO
-// ========================================
+// ============================================
+// SPEECH SYNTHESIS (INGLÉS)
+// ============================================
+function speakEnglish(text) {
+  if (!window.speechSynthesis) {
+    console.log('Speech synthesis not supported');
+    return;
+  }
+  // Cancel any ongoing speech
+  window.speechSynthesis.cancel();
+  
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'en-US';
+  utterance.rate = 0.9;
+  utterance.pitch = 1.2;
+  utterance.volume = 1;
+  
+  // Try to select a female voice
+  const voices = window.speechSynthesis.getVoices();
+  const femaleVoice = voices.find(voice => voice.lang.includes('en') && voice.name.includes('Google UK'));
+  if (femaleVoice) {
+    utterance.voice = femaleVoice;
+  }
+  
+  window.speechSynthesis.speak(utterance);
+}
+
+// ============================================
+// GAME DATA
+// ============================================
 const GEO_DB = [
-  {country:"ESPAÑA", flag:"🇪🇸", capital:"MADRID", capitalEn:"MADRID"},
-  {country:"FRANCIA", flag:"🇫🇷", capital:"PARÍS", capitalEn:"PARIS"},
-  {country:"ITALIA", flag:"🇮🇹", capital:"ROMA", capitalEn:"ROME"},
-  {country:"R. UNIDO", flag:"🇬🇧", capital:"LONDRES", capitalEn:"LONDON"},
-  {country:"ALEMANIA", flag:"🇩🇪", capital:"BERLÍN", capitalEn:"BERLIN"},
-  {country:"EE.UU.", flag:"🇺🇸", capital:"WASHINGTON", capitalEn:"WASHINGTON"},
-  {country:"JAPÓN", flag:"🇯🇵", capital:"TOKIO", capitalEn:"TOKYO"},
-  {country:"CHINA", flag:"🇨🇳", capital:"PEKÍN", capitalEn:"BEIJING"},
-  {country:"PORTUGAL", flag:"🇵🇹", capital:"LISBOA", capitalEn:"LISBON"},
-  {country:"BRASIL", flag:"🇧🇷", capital:"BRASILIA", capitalEn:"BRASILIA"},
-  {country:"ARGENTINA", flag:"🇦🇷", capital:"BUENOS AIRES", capitalEn:"BUENOS AIRES"},
-  {country:"MÉXICO", flag:"🇲🇽", capital:"CIUDAD DE MÉXICO", capitalEn:"MEXICO CITY"},
-  {country:"RUSIA", flag:"🇷🇺", capital:"MOSCÚ", capitalEn:"MOSCOW"},
-  {country:"EGIPTO", flag:"🇪🇬", capital:"EL CAIRO", capitalEn:"CAIRO"},
-  {country:"INDIA", flag:"🇮🇳", capital:"NUEVA DELHI", capitalEn:"NEW DELHI"},
-  {country:"GRECIA", flag:"🇬🇷", capital:"ATENAS", capitalEn:"ATHENS"}
+  {country: "ESPAÑA", flag: "🇪🇸", capital: "MADRID", capitalEn: "Madrid"},
+  {country: "FRANCIA", flag: "🇫🇷", capital: "PARÍS", capitalEn: "Paris"},
+  {country: "ITALIA", flag: "🇮🇹", capital: "ROMA", capitalEn: "Rome"},
+  {country: "REINO UNIDO", flag: "🇬🇧", capital: "LONDRES", capitalEn: "London"},
+  {country: "ALEMANIA", flag: "🇩🇪", capital: "BERLÍN", capitalEn: "Berlin"},
+  {country: "ESTADOS UNIDOS", flag: "🇺🇸", capital: "WASHINGTON", capitalEn: "Washington"},
+  {country: "JAPÓN", flag: "🇯🇵", capital: "TOKIO", capitalEn: "Tokyo"},
+  {country: "CHINA", flag: "🇨🇳", capital: "PEKÍN", capitalEn: "Beijing"},
+  {country: "PORTUGAL", flag: "🇵🇹", capital: "LISBOA", capitalEn: "Lisbon"},
+  {country: "BRASIL", flag: "🇧🇷", capital: "BRASILIA", capitalEn: "Brasilia"},
+  {country: "ARGENTINA", flag: "🇦🇷", capital: "BUENOS AIRES", capitalEn: "Buenos Aires"},
+  {country: "MÉXICO", flag: "🇲🇽", capital: "CIUDAD DE MÉXICO", capitalEn: "Mexico City"},
+  {country: "RUSIA", flag: "🇷🇺", capital: "MOSCÚ", capitalEn: "Moscow"},
+  {country: "EGIPTO", flag: "🇪🇬", capital: "EL CAIRO", capitalEn: "Cairo"},
+  {country: "INDIA", flag: "🇮🇳", capital: "NUEVA DELHI", capitalEn: "New Delhi"},
+  {country: "GRECIA", flag: "🇬🇷", capital: "ATENAS", capitalEn: "Athens"}
 ];
 
 const ZOO_DB = [
-  {emoji:"🦁", es:"LEÓN", en:"LION"},
-  {emoji:"🐯", es:"TIGRE", en:"TIGER"},
-  {emoji:"🐘", es:"ELEFANTE", en:"ELEPHANT"},
-  {emoji:"🦒", es:"JIRAFA", en:"GIRAFFE"},
-  {emoji:"🦓", es:"CEBRA", en:"ZEBRA"},
-  {emoji:"🐒", es:"MONO", en:"MONKEY"},
-  {emoji:"🐮", es:"VACA", en:"COW"},
-  {emoji:"🐷", es:"CERDO", en:"PIG"},
-  {emoji:"🐔", es:"GALLINA", en:"CHICKEN"},
-  {emoji:"🐴", es:"CABALLO", en:"HORSE"},
-  {emoji:"🐶", es:"PERRO", en:"DOG"},
-  {emoji:"🐱", es:"GATO", en:"CAT"},
-  {emoji:"🐳", es:"BALLENA", en:"WHALE"},
-  {emoji:"🐬", es:"DELFÍN", en:"DOLPHIN"},
-  {emoji:"🐙", es:"PULPO", en:"OCTOPUS"},
-  {emoji:"🐢", es:"TORTUGA", en:"TURTLE"},
-  {emoji:"🐧", es:"PINGÜINO", en:"PENGUIN"},
-  {emoji:"🐸", es:"RANA", en:"FROG"}
+  {emoji: "🦁", es: "LEÓN", en: "Lion"},
+  {emoji: "🐯", es: "TIGRE", en: "Tiger"},
+  {emoji: "🐘", es: "ELEFANTE", en: "Elephant"},
+  {emoji: "🦒", es: "JIRAFA", en: "Giraffe"},
+  {emoji: "🦓", es: "CEBRA", en: "Zebra"},
+  {emoji: "🐒", es: "MONO", en: "Monkey"},
+  {emoji: "🐮", es: "VACA", en: "Cow"},
+  {emoji: "🐷", es: "CERDO", en: "Pig"},
+  {emoji: "🐔", es: "GALLINA", en: "Chicken"},
+  {emoji: "🐴", es: "CABALLO", en: "Horse"},
+  {emoji: "🐶", es: "PERRO", en: "Dog"},
+  {emoji: "🐱", es: "GATO", en: "Cat"},
+  {emoji: "🐳", es: "BALLENA", en: "Whale"},
+  {emoji: "🐬", es: "DELFIN", en: "Dolphin"},
+  {emoji: "🐙", es: "PULPO", en: "Octopus"},
+  {emoji: "🐢", es: "TORTUGA", en: "Turtle"},
+  {emoji: "🐧", es: "PINGÜINO", en: "Penguin"},
+  {emoji: "🐸", es: "RANA", en: "Frog"}
 ];
 
 const NUM_DB = [
-  {emoji:"1", es:"UNO", en:"ONE"},
-  {emoji:"2", es:"DOS", en:"TWO"},
-  {emoji:"3", es:"TRES", en:"THREE"},
-  {emoji:"4", es:"CUATRO", en:"FOUR"},
-  {emoji:"5", es:"CINCO", en:"FIVE"},
-  {emoji:"6", es:"SEIS", en:"SIX"},
-  {emoji:"7", es:"SIETE", en:"SEVEN"},
-  {emoji:"8", es:"OCHO", en:"EIGHT"},
-  {emoji:"9", es:"NUEVE", en:"NINE"},
-  {emoji:"10", es:"DIEZ", en:"TEN"}
+  {emoji: "1", es: "UNO", en: "One"},
+  {emoji: "2", es: "DOS", en: "Two"},
+  {emoji: "3", es: "TRES", en: "Three"},
+  {emoji: "4", es: "CUATRO", en: "Four"},
+  {emoji: "5", es: "CINCO", en: "Five"},
+  {emoji: "6", es: "SEIS", en: "Six"},
+  {emoji: "7", es: "SIETE", en: "Seven"},
+  {emoji: "8", es: "OCHO", en: "Eight"},
+  {emoji: "9", es: "NUEVE", en: "Nine"},
+  {emoji: "10", es: "DIEZ", en: "Ten"}
 ];
 
-// ========================================
-// VARIABLES DE ESTADO
-// ========================================
-let mode = '';
+const COLORS_DB = [
+  {emoji: "🍎", name: "manzana", color: "rojo", colorEn: "red", hex: "#ef4444"},
+  {emoji: "🍌", name: "plátano", color: "amarillo", colorEn: "yellow", hex: "#fbbf24"},
+  {emoji: "🥒", name: "pepino", color: "verde", colorEn: "green", hex: "#22c55e"},
+  {emoji: "🫐", name: "arándanos", color: "azul", colorEn: "blue", hex: "#3b82f6"},
+  {emoji: "🧡", name: "corazón", color: "naranja", colorEn: "orange", hex: "#f97316"},
+  {emoji: "🍇", name: "uvas", color: "morado", colorEn: "purple", hex: "#a855f7"},
+  {emoji: "🌸", name: "flor", color: "rosa", colorEn: "pink", hex: "#ec4899"},
+  {emoji: "☁️", name: "nube", color: "blanco", colorEn: "white", hex: "#f8fafc"},
+  {emoji: "🌙", name: "luna", color: "amarillo", colorEn: "yellow", hex: "#fbbf24"},
+  {emoji: "🌲", name: "árbol", color: "verde", colorEn: "green", hex: "#22c55e"},
+  {emoji: "🚗", name: "coche", color: "rojo", colorEn: "red", hex: "#ef4444"},
+  {emoji: "🌊", name: "mar", color: "azul", colorEn: "blue", hex: "#3b82f6"}
+];
+
+const COLOR_NAMES = [
+  {name: "ROJO", en: "Red", hex: "#ef4444"},
+  {name: "AMARILLO", en: "Yellow", hex: "#fbbf24"},
+  {name: "VERDE", en: "Green", hex: "#22c55e"},
+  {name: "AZUL", en: "Blue", hex: "#3b82f6"},
+  {name: "NARANJA", en: "Orange", hex: "#f97316"},
+  {name: "MORADO", en: "Purple", hex: "#a855f7"},
+  {name: "ROSA", en: "Pink", hex: "#ec4899"},
+  {name: "BLANCO", en: "White", hex: "#f8fafc"}
+];
+
+// ============================================
+// STATE VARIABLES
+// ============================================
+let currentMode = '';
 let difficulty = 'easy';
 let matches = 0;
 let totalMatches = 0;
 let flippedCards = [];
 let lockBoard = false;
 let selectedNameBtn = null;
+let selectedColorBtn = null;
+let currentColorItem = null;
 let learnedWords = [];
 let currentLevelData = [];
+let colorsMatched = 0;
 
-// ========================================
-// PERSISTENCIA (localStorage)
-// ========================================
-function loadSettings() {
-  const savedDiff = localStorage.getItem('noaGameDifficulty');
-  if (savedDiff) {
-    difficulty = savedDiff;
-    updateDifficultyUI();
-  }
-  updatePlayCounts();
-}
-
-function saveSettings() {
-  localStorage.setItem('noaGameDifficulty', difficulty);
-}
-
-function incrementPlayCount(gameMode) {
-  const key = `noaGame_${gameMode}_plays`;
-  let count = parseInt(localStorage.getItem(key) || '0');
-  count++;
-  localStorage.setItem(key, count.toString());
-  updatePlayCounts();
-}
-
-function updatePlayCounts() {
-  const zooCount = localStorage.getItem('noaGame_zoo_plays') || '0';
-  const numbersCount = localStorage.getItem('noaGame_numbers_plays') || '0';
-  const geoCount = localStorage.getItem('noaGame_geo_plays') || '0';
-  
-  document.getElementById('zooPlays').textContent = `🎮 ${zooCount} veces`;
-  document.getElementById('numbersPlays').textContent = `🎮 ${numbersCount} veces`;
-  document.getElementById('geoPlays').textContent = `🎮 ${geoCount} veces`;
-}
-
-function updateDifficultyUI() {
-  document.querySelectorAll('.diff-btn').forEach(b => {
-    b.classList.remove('selected');
-    b.setAttribute('aria-pressed', 'false');
-  });
-  const btn = document.getElementById(difficulty === 'easy' ? 'btnEasy' : 'btnHard');
-  btn.classList.add('selected');
-  btn.setAttribute('aria-pressed', 'true');
-  
-  const indicator = difficulty === 'easy' ? '😊 Fácil' : '⚡ Reto';
-  document.getElementById('diffIndicator').textContent = indicator;
-  document.getElementById('gameDiffBadge').textContent = indicator;
-}
-
-function hasSeenTutorial(gameMode) {
-  return localStorage.getItem(`noaGame_tutorial_${gameMode}`) === 'true';
-}
-
-function markTutorialSeen(gameMode) {
-  localStorage.setItem(`noaGame_tutorial_${gameMode}`, 'true');
-}
-
-// ========================================
-// SISTEMA DE AUDIO
-// ========================================
+// ============================================
+// AUDIO SYSTEM
+// ============================================
 let audioCtx = null;
 
 function initAudioContext() {
@@ -1302,7 +1791,7 @@ function initAudioContext() {
   }
 }
 
-function playFx(type) {
+function playSound(type) {
   initAudioContext();
   if (!audioCtx) return;
   
@@ -1313,36 +1802,36 @@ function playFx(type) {
     const gain = audioCtx.createGain();
     osc.connect(gain);
     gain.connect(audioCtx.destination);
-    osc.frequency.setValueAtTime(400, t);
-    osc.frequency.exponentialRampToValueAtTime(600, t + 0.1);
-    gain.gain.setValueAtTime(0.1, t);
-    gain.gain.linearRampToValueAtTime(0, t + 0.1);
+    osc.frequency.setValueAtTime(500, t);
+    osc.frequency.exponentialRampToValueAtTime(700, t + 0.08);
+    gain.gain.setValueAtTime(0.08, t);
+    gain.gain.linearRampToValueAtTime(0, t + 0.08);
     osc.start(t);
-    osc.stop(t + 0.1);
-  } else if (type === 'win') {
-    [523, 659, 783, 1046].forEach((f, i) => {
+    osc.stop(t + 0.08);
+  } else if (type === 'match') {
+    [523, 659, 783].forEach((f, i) => {
       const o = audioCtx.createOscillator();
       const g = audioCtx.createGain();
-      o.type = 'triangle';
+      o.type = 'sine';
       o.connect(g);
       g.connect(audioCtx.destination);
       o.frequency.value = f;
-      g.gain.setValueAtTime(0.08, t + i * 0.08);
-      g.gain.linearRampToValueAtTime(0, t + i * 0.08 + 0.3);
+      g.gain.setValueAtTime(0.06, t + i * 0.08);
+      g.gain.linearRampToValueAtTime(0, t + i * 0.08 + 0.25);
       o.start(t + i * 0.08);
-      o.stop(t + i * 0.08 + 0.3);
+      o.stop(t + i * 0.08 + 0.25);
     });
   } else if (type === 'error') {
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
     osc.connect(gain);
     gain.connect(audioCtx.destination);
-    osc.frequency.setValueAtTime(150, t);
-    osc.frequency.linearRampToValueAtTime(100, t + 0.2);
-    gain.gain.setValueAtTime(0.1, t);
-    gain.gain.linearRampToValueAtTime(0, t + 0.2);
+    osc.frequency.setValueAtTime(200, t);
+    osc.frequency.linearRampToValueAtTime(150, t + 0.15);
+    gain.gain.setValueAtTime(0.08, t);
+    gain.gain.linearRampToValueAtTime(0, t + 0.15);
     osc.start(t);
-    osc.stop(t + 0.2);
+    osc.stop(t + 0.15);
   } else if (type === 'complete') {
     const notes = [523, 659, 783, 880, 1046, 1318];
     notes.forEach((f, i) => {
@@ -1352,79 +1841,194 @@ function playFx(type) {
       o.connect(g);
       g.connect(audioCtx.destination);
       o.frequency.value = f;
-      g.gain.setValueAtTime(0.1, t + i * 0.1);
-      g.gain.linearRampToValueAtTime(0, t + i * 0.1 + 0.4);
+      g.gain.setValueAtTime(0.08, t + i * 0.1);
+      g.gain.linearRampToValueAtTime(0, t + i * 0.1 + 0.35);
       o.start(t + i * 0.1);
-      o.stop(t + i * 0.1 + 0.4);
+      o.stop(t + i * 0.1 + 0.35);
     });
   }
 }
 
-// ========================================
-// NAVEGACIÓN ENTRE PANTALLAS
-// ========================================
+// ============================================
+// NAVIGATION
+// ============================================
 function showScreen(screenId) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(screenId).classList.add('active');
+  const screen = document.getElementById(screenId);
+  if (screen) {
+    screen.classList.add('active');
+  }
 }
 
 function goToMenu() {
-  playFx('tap');
+  playSound('tap');
   showScreen('menu');
 }
 
-function goHome() {
-  playFx('tap');
-  showScreen('portada');
+// ============================================
+// PERSISTENCE
+// ============================================
+function loadSettings() {
+  const savedDiff = localStorage.getItem('sofiaNoa_difficulty');
+  if (savedDiff) {
+    difficulty = savedDiff;
+    updateDifficultyUI();
+  }
+  updatePlayCounts();
 }
 
-// ========================================
-// CONFIGURACIÓN DE DIFICULTAD
-// ========================================
+function saveSettings() {
+  localStorage.setItem('sofiaNoa_difficulty', difficulty);
+}
+
+function incrementPlayCount(gameMode) {
+  const key = `sofiaNoa_${gameMode}_plays`;
+  let count = parseInt(localStorage.getItem(key) || '0');
+  count++;
+  localStorage.setItem(key, count.toString());
+  updatePlayCounts();
+}
+
+function updatePlayCounts() {
+  ['zoo', 'numbers', 'geo', 'colors'].forEach(mode => {
+    const count = localStorage.getItem(`sofiaNoa_${mode}_plays`) || '0';
+    const el = document.getElementById(`${mode}Plays`);
+    if (el) {
+      el.textContent = `${count} partidas`;
+    }
+  });
+}
+
+function updateDifficultyUI() {
+  document.querySelectorAll('.diff-btn').forEach(b => {
+    b.classList.remove('selected');
+    b.setAttribute('aria-pressed', 'false');
+  });
+  
+  const btnId = difficulty === 'easy' ? 'btnEasy' : 'btnHard';
+  const btn = document.getElementById(btnId);
+  if (btn) {
+    btn.classList.add('selected');
+    btn.setAttribute('aria-pressed', 'true');
+  }
+  
+  const label = difficulty === 'easy' ? 'Nivel Fácil' : 'Nivel Reto';
+  const indicator = document.getElementById('diffIndicator');
+  const badge = document.getElementById('gameDiffBadge');
+  if (indicator) indicator.textContent = label;
+  if (badge) badge.textContent = difficulty === 'easy' ? 'Fácil' : 'Reto';
+}
+
 function setDiff(d) {
   initAudioContext();
-  playFx('tap');
+  playSound('tap');
   difficulty = d;
   saveSettings();
   updateDifficultyUI();
 }
 
-// ========================================
+function hasSeenTutorial(gameMode) {
+  return localStorage.getItem(`sofiaNoa_tutorial_${gameMode}`) === 'true';
+}
+
+function markTutorialSeen(gameMode) {
+  localStorage.setItem(`sofiaNoa_tutorial_${gameMode}`, 'true');
+}
+
+// ============================================
 // TUTORIAL
-// ========================================
-function showTutorial() {
+// ============================================
+const TUTORIALS = {
+  zoo: {
+    icon: '🦁',
+    title: 'El Gran Zoo',
+    steps: [
+      'Toca una carta para voltearla',
+      'Busca otra carta con el mismo animal',
+      '¡Encuentra todas las parejas!'
+    ]
+  },
+  numbers: {
+    icon: '🔢',
+    title: 'Números',
+    steps: [
+      'Toca una carta para ver el número',
+      'Busca la otra carta con el mismo número',
+      '¡Empareja todos los números!'
+    ]
+  },
+  geo: {
+    icon: '🌍',
+    title: 'Viaja por el Mundo',
+    steps: [
+      'Primero toca una capital de abajo',
+      'Luego toca la bandera de su país',
+      '¡Conecta todas las parejas!'
+    ]
+  },
+  colors: {
+    icon: '🎨',
+    title: 'Colores Mágicos',
+    steps: [
+      'Mira el objeto que aparece',
+      'Piensa de qué color es',
+      '¡Toca el color correcto!'
+    ]
+  }
+};
+
+function showTutorial(mode) {
+  const tutorial = TUTORIALS[mode];
+  if (!tutorial) return;
+  
+  document.getElementById('tutorialIcon').textContent = tutorial.icon;
+  document.getElementById('tutorialTitle').textContent = tutorial.title;
+  
+  const stepsContainer = document.getElementById('tutorialSteps');
+  stepsContainer.innerHTML = '';
+  
+  tutorial.steps.forEach((step, i) => {
+    const stepEl = document.createElement('div');
+    stepEl.className = 'tutorial-step';
+    stepEl.innerHTML = `
+      <span class="step-num">${i + 1}</span>
+      <span>${step}</span>
+    `;
+    stepsContainer.appendChild(stepEl);
+  });
+  
   document.getElementById('tutorialOverlay').classList.add('active');
 }
 
 function closeTutorial() {
-  playFx('tap');
+  playSound('tap');
   document.getElementById('tutorialOverlay').classList.remove('active');
-  markTutorialSeen('geo');
+  markTutorialSeen(currentMode);
 }
 
-// ========================================
-// INICIAR JUEGO
-// ========================================
-function initGame(m) {
+// ============================================
+// GAME INITIALIZATION
+// ============================================
+function initGame(mode) {
   initAudioContext();
-  playFx('tap');
-  mode = m;
+  playSound('tap');
+  currentMode = mode;
   learnedWords = [];
   currentLevelData = [];
-  incrementPlayCount(m);
+  incrementPlayCount(mode);
   
   showScreen('game');
   
-  // Mostrar tutorial para geo si es la primera vez
-  if (m === 'geo' && !hasSeenTutorial('geo')) {
-    setTimeout(showTutorial, 500);
+  // Show tutorial for first-time players
+  if (!hasSeenTutorial(mode)) {
+    setTimeout(() => showTutorial(mode), 400);
   }
   
   setupLevel();
 }
 
 function playAgain() {
-  playFx('tap');
+  playSound('tap');
   learnedWords = [];
   showScreen('game');
   setupLevel();
@@ -1432,79 +2036,94 @@ function playAgain() {
 
 function setupLevel() {
   matches = 0;
-  document.getElementById('progress-bar').innerHTML = "";
-  document.getElementById('memory-area').style.display = 'none';
-  document.getElementById('geo-area').style.display = 'none';
+  colorsMatched = 0;
+  selectedNameBtn = null;
+  selectedColorBtn = null;
+  currentColorItem = null;
+  
+  document.getElementById('progress-bar').innerHTML = '';
+  
+  // Hide all game areas
+  document.getElementById('memory-area').classList.remove('active');
+  document.getElementById('geo-area').classList.remove('active');
+  document.getElementById('colors-area').classList.remove('active');
 
-  if (mode === 'geo') {
-    setupGeo();
-  } else {
-    setupMemory();
+  switch (currentMode) {
+    case 'zoo':
+    case 'numbers':
+      setupMemory();
+      break;
+    case 'geo':
+      setupGeo();
+      break;
+    case 'colors':
+      setupColors();
+      break;
   }
 }
 
-// ========================================
-// POPUP DE VOCABULARIO
-// ========================================
-function showVocabPopup(emoji, spanish, english, isGeo = false) {
+// ============================================
+// VOCABULARY POPUP (CON VOZ EN INGLÉS)
+// ============================================
+function showVocabPopup(emoji, spanish, english) {
   const popup = document.getElementById('vocabPopup');
   document.getElementById('vocabEmoji').textContent = emoji;
   document.getElementById('vocabSpanish').textContent = spanish;
   document.getElementById('vocabEnglish').textContent = english;
   
-  // Mostrar banderas de idioma
-  const flagDiv = document.getElementById('vocabFlag');
-  if (isGeo) {
-    flagDiv.innerHTML = '🌍';
-  } else {
-    flagDiv.innerHTML = '🇪🇸 🇬🇧';
-  }
-  
   popup.classList.add('show');
   
-  // Vibración suave si está disponible
+  // Speak the English word
+  speakEnglish(english);
+  
   if (navigator.vibrate) {
     navigator.vibrate(50);
   }
   
   setTimeout(() => {
     popup.classList.remove('show');
-  }, 2000);
+  }, 1800);
 }
 
-// ========================================
-// LÓGICA MEMORY
-// ========================================
+// ============================================
+// MEMORY GAME
+// ============================================
 function setupMemory() {
-  document.getElementById('memory-area').style.display = 'flex';
-  const grid = document.getElementById('grid');
-  grid.innerHTML = "";
+  document.getElementById('memory-area').classList.add('active');
+  const grid = document.getElementById('memory-grid');
+  grid.innerHTML = '';
   flippedCards = [];
   lockBoard = false;
   
   const numPairs = difficulty === 'easy' ? 3 : 6;
   totalMatches = numPairs;
   
+  // Add stars to progress
   for (let i = 0; i < numPairs; i++) {
     addStar();
   }
 
-  const source = mode === 'zoo' ? ZOO_DB : NUM_DB;
+  const source = currentMode === 'zoo' ? ZOO_DB : NUM_DB;
   let items = [...source].sort(() => Math.random() - 0.5).slice(0, numPairs);
   currentLevelData = items;
   
+  // Create deck with pairs
   let deck = [...items, ...items].sort(() => Math.random() - 0.5);
   
+  // Set grid columns based on difficulty
   const cols = difficulty === 'easy' ? 3 : 4;
   grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
 
   deck.forEach((item, index) => {
     const card = document.createElement('div');
-    card.className = 'card';
+    card.className = 'memory-card';
     card.setAttribute('role', 'button');
     card.setAttribute('tabindex', '0');
     card.setAttribute('aria-label', `Carta ${index + 1}`);
-    card.innerHTML = `<div class="face front" aria-hidden="true">❓</div><div class="face back" aria-hidden="true">${item.emoji}</div>`;
+    card.innerHTML = `
+      <div class="card-face card-front"></div>
+      <div class="card-face card-back">${item.emoji}</div>
+    `;
     card.dataset.itemEs = item.es;
     card.dataset.itemEn = item.en;
     card.dataset.itemEmoji = item.emoji;
@@ -1521,54 +2140,57 @@ function setupMemory() {
 
 function flipCard(card, item) {
   if (lockBoard || card.classList.contains('flipped')) return;
-  playFx('tap');
+  
+  playSound('tap');
   card.classList.add('flipped');
-  card.setAttribute('aria-label', `Carta volteada: ${item.es}`);
-  flippedCards.push({el: card, item: item});
+  card.setAttribute('aria-label', `${item.es}`);
+  flippedCards.push({ el: card, item: item });
 
   if (flippedCards.length === 2) {
     lockBoard = true;
+    
     if (flippedCards[0].item.emoji === flippedCards[1].item.emoji) {
-      // ¡Match!
-      playFx('win');
+      // Match found
+      playSound('match');
       flippedCards.forEach(c => {
         c.el.classList.add('matched');
-        c.el.setAttribute('aria-label', `Pareja encontrada: ${item.es}`);
+        c.el.setAttribute('aria-label', `Pareja: ${item.es}`);
       });
       
-      // Mostrar vocabulario
+      // Show vocabulary
       showVocabPopup(item.emoji, item.es, item.en);
       
-      // Guardar palabra aprendida
+      // Save learned word
       if (!learnedWords.find(w => w.emoji === item.emoji)) {
-        learnedWords.push({emoji: item.emoji, es: item.es, en: item.en});
+        learnedWords.push({ emoji: item.emoji, es: item.es, en: item.en });
       }
       
       flippedCards = [];
       lockBoard = false;
       addScore();
     } else {
+      // No match
       setTimeout(() => {
+        playSound('error');
         flippedCards.forEach(c => {
           c.el.classList.remove('flipped');
-          c.el.setAttribute('aria-label', 'Carta oculta');
         });
         flippedCards = [];
         lockBoard = false;
-      }, 1000);
+      }, 900);
     }
   }
 }
 
-// ========================================
-// LÓGICA GEO (TAP & MATCH)
-// ========================================
+// ============================================
+// GEO GAME
+// ============================================
 function setupGeo() {
-  document.getElementById('geo-area').style.display = 'flex';
+  document.getElementById('geo-area').classList.add('active');
   const flagBox = document.getElementById('flags-box');
   const nameBox = document.getElementById('names-box');
-  flagBox.innerHTML = "";
-  nameBox.innerHTML = "";
+  flagBox.innerHTML = '';
+  nameBox.innerHTML = '';
   selectedNameBtn = null;
 
   const count = difficulty === 'easy' ? 3 : 6;
@@ -1581,7 +2203,7 @@ function setupGeo() {
   let levelData = [...GEO_DB].sort(() => Math.random() - 0.5).slice(0, count);
   currentLevelData = levelData;
 
-  // Crear banderas
+  // Create flag boxes
   levelData.forEach(item => {
     const box = document.createElement('div');
     box.className = 'flag-box';
@@ -1589,13 +2211,13 @@ function setupGeo() {
     box.dataset.capitalEn = item.capitalEn;
     box.dataset.country = item.country;
     box.dataset.flag = item.flag;
-    box.setAttribute('role', 'listitem');
+    box.setAttribute('role', 'button');
     box.setAttribute('tabindex', '0');
-    box.setAttribute('aria-label', `Bandera de ${item.country}. Toca para emparejar con su capital.`);
+    box.setAttribute('aria-label', `Bandera de ${item.country}`);
     box.innerHTML = `
-      <div class="flag-emoji" aria-hidden="true">${item.flag}</div>
-      <div class="flag-label" aria-hidden="true">${item.country}</div>
-      <div class="solved-text" aria-hidden="true">${item.capital}</div>
+      <div class="flag-emoji">${item.flag}</div>
+      <div class="flag-label">${item.country}</div>
+      <div class="solved-label">${item.capital}</div>
     `;
     box.onclick = () => handleFlagClick(box);
     box.onkeydown = (e) => {
@@ -1607,16 +2229,17 @@ function setupGeo() {
     flagBox.appendChild(box);
   });
 
-  // Crear botones de nombres (barajados)
+  // Create name buttons (shuffled)
   let names = [...levelData].sort(() => Math.random() - 0.5);
   names.forEach(item => {
     const btn = document.createElement('div');
     btn.className = 'name-btn';
-    btn.setAttribute('role', 'listitem');
+    btn.setAttribute('role', 'button');
     btn.setAttribute('tabindex', '0');
-    btn.setAttribute('aria-label', `Capital: ${item.capital}. Toca para seleccionar.`);
-    btn.innerText = item.capital;
+    btn.setAttribute('aria-label', `Capital: ${item.capital}`);
+    btn.textContent = item.capital;
     btn.dataset.capitalEn = item.capitalEn;
+    btn.dataset.capital = item.capital;
     btn.onclick = () => handleNameClick(btn);
     btn.onkeydown = (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -1629,35 +2252,31 @@ function setupGeo() {
 }
 
 function handleNameClick(btn) {
-  playFx('tap');
+  playSound('tap');
+  
   if (selectedNameBtn) {
     selectedNameBtn.classList.remove('selected');
-    selectedNameBtn.setAttribute('aria-selected', 'false');
   }
   
   selectedNameBtn = btn;
   btn.classList.add('selected');
-  btn.setAttribute('aria-selected', 'true');
 }
 
 function handleFlagClick(box) {
   if (!selectedNameBtn || box.classList.contains('solved')) {
-    if (!box.classList.contains('solved')) {
-      playFx('error');
-    }
     return;
   }
 
-  if (box.dataset.capital === selectedNameBtn.innerText) {
-    // ¡Acierto!
-    playFx('win');
+  if (box.dataset.capital === selectedNameBtn.dataset.capital) {
+    // Correct match
+    playSound('match');
     box.classList.add('solved');
-    box.setAttribute('aria-label', `${box.dataset.country} - Capital: ${box.dataset.capital}. ¡Correcto!`);
+    box.setAttribute('aria-label', `${box.dataset.country} - ${box.dataset.capital}`);
     
-    // Mostrar vocabulario
-    showVocabPopup(box.dataset.flag, box.dataset.capital, box.dataset.capitalEn, true);
+    // Show vocabulary
+    showVocabPopup(box.dataset.flag, box.dataset.capital, box.dataset.capitalEn);
     
-    // Guardar palabra aprendida
+    // Save learned word
     learnedWords.push({
       emoji: box.dataset.flag,
       es: box.dataset.capital,
@@ -1665,24 +2284,128 @@ function handleFlagClick(box) {
     });
     
     selectedNameBtn.classList.add('hidden');
-    selectedNameBtn.setAttribute('aria-hidden', 'true');
     selectedNameBtn = null;
     addScore();
   } else {
-    // Error
-    playFx('error');
+    // Wrong match
+    playSound('error');
     box.classList.add('shake');
-    setTimeout(() => box.classList.remove('shake'), 500);
+    setTimeout(() => box.classList.remove('shake'), 400);
   }
 }
 
-// ========================================
-// SISTEMA DE PUNTUACIÓN
-// ========================================
+// ============================================
+// COLORS GAME (NEW - Ages 4-5)
+// ============================================
+function setupColors() {
+  document.getElementById('colors-area').classList.add('active');
+  
+  const count = difficulty === 'easy' ? 3 : 6;
+  totalMatches = count;
+  colorsMatched = 0;
+  
+  for (let i = 0; i < count; i++) {
+    addStar();
+  }
+
+  // Get random color items
+  currentLevelData = [...COLORS_DB].sort(() => Math.random() - 0.5).slice(0, count);
+  
+  showNextColorItem();
+  
+  // Create color palette
+  const palette = document.getElementById('color-palette');
+  palette.innerHTML = '';
+  
+  // Get unique colors used in this level + some extras
+  let usedColors = [...new Set(currentLevelData.map(item => item.hex))];
+  let allColors = [...COLOR_NAMES];
+  
+  // Shuffle and take needed colors
+  let paletteColors = allColors
+    .filter(c => usedColors.includes(c.hex))
+    .concat(allColors.filter(c => !usedColors.includes(c.hex)))
+    .slice(0, 6);
+  
+  paletteColors.forEach(color => {
+    const btn = document.createElement('div');
+    btn.className = 'color-btn';
+    btn.style.backgroundColor = color.hex;
+    btn.dataset.color = color.name;
+    btn.dataset.colorEn = color.en;
+    btn.setAttribute('role', 'button');
+    btn.setAttribute('tabindex', '0');
+    btn.setAttribute('aria-label', `Color ${color.name}`);
+    btn.onclick = () => handleColorClick(btn);
+    btn.onkeydown = (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleColorClick(btn);
+      }
+    };
+    palette.appendChild(btn);
+  });
+}
+
+function showNextColorItem() {
+  const item = currentLevelData[colorsMatched];
+  if (!item) return;
+  
+  currentColorItem = item;
+  
+  document.getElementById('target-emoji').textContent = item.emoji;
+  document.getElementById('target-word').textContent = item.name;
+}
+
+function handleColorClick(btn) {
+  if (!currentColorItem) return;
+  
+  const selectedColor = btn.dataset.color.toLowerCase();
+  const correctColor = currentColorItem.color.toLowerCase();
+  
+  if (selectedColor === correctColor) {
+    // Correct!
+    playSound('match');
+    btn.classList.add('correct');
+    
+    // Show vocabulary
+    showVocabPopup(
+      currentColorItem.emoji,
+      currentColorItem.color.toUpperCase(),
+      currentColorItem.colorEn
+    );
+    
+    // Save learned word
+    learnedWords.push({
+      emoji: currentColorItem.emoji,
+      es: currentColorItem.color.toUpperCase(),
+      en: currentColorItem.colorEn
+    });
+    
+    setTimeout(() => {
+      btn.classList.remove('correct');
+      colorsMatched++;
+      addScore();
+      
+      if (colorsMatched < currentLevelData.length) {
+        showNextColorItem();
+      }
+    }, 600);
+  } else {
+    // Wrong
+    playSound('error');
+    btn.classList.add('wrong');
+    setTimeout(() => btn.classList.remove('wrong'), 400);
+  }
+}
+
+// ============================================
+// PROGRESS SYSTEM
+// ============================================
 function addStar() {
   const s = document.createElement('div');
   s.className = 'star';
-  s.innerHTML = '⭐';
+  s.textContent = '⭐';
   s.setAttribute('aria-hidden', 'true');
   document.getElementById('progress-bar').appendChild(s);
 }
@@ -1699,19 +2422,17 @@ function addScore() {
   progressBar.setAttribute('aria-valuemax', totalMatches);
   
   if (matches === totalMatches) {
-    setTimeout(() => {
-      showSummary();
-    }, 1500);
+    setTimeout(showSummary, 1200);
   }
 }
 
-// ========================================
-// PANTALLA DE RESUMEN
-// ========================================
+// ============================================
+// SUMMARY SCREEN
+// ============================================
 function showSummary() {
-  playFx('complete');
+  playSound('complete');
   
-  // Generar estrellas
+  // Generate stars
   const starsContainer = document.getElementById('summaryStars');
   starsContainer.innerHTML = '';
   for (let i = 0; i < totalMatches; i++) {
@@ -1721,7 +2442,7 @@ function showSummary() {
     starsContainer.appendChild(star);
   }
   
-  // Generar palabras aprendidas
+  // Generate learned words
   const wordsContainer = document.getElementById('summaryWords');
   wordsContainer.innerHTML = '';
   learnedWords.forEach(word => {
@@ -1735,116 +2456,89 @@ function showSummary() {
     wordsContainer.appendChild(wordEl);
   });
   
-  // Mensaje motivacional aleatorio
+  // Random motivational message
   const messages = [
-    "¡Has aprendido mucho hoy! Cada vez eres más lista. 🌟",
-    "¡Sofía y Noa están muy orgullosas de ti! 💖",
-    "¡Eres una campeona del aprendizaje! 🎉",
-    "¡Qué bien lo has hecho! Sigue así. ✨",
-    "¡Increíble! Has aprendido " + learnedWords.length + " palabras nuevas. 📚"
+    "¡Fantástico! Has aprendido mucho hoy.",
+    "¡Qué bien lo has hecho! Sigue así.",
+    "¡Eres increíble! Cada vez aprendes más.",
+    "¡Bravo! Sofía y Noa están muy orgullosas.",
+    `¡Has aprendido ${learnedWords.length} palabras nuevas!`
   ];
-  document.getElementById('summaryMessage').textContent = messages[Math.floor(Math.random() * messages.length)];
+  document.getElementById('summaryMessage').textContent = 
+    messages[Math.floor(Math.random() * messages.length)];
   
-  // Subtítulo según el modo
+  // Mode subtitle
   const subtitles = {
-    'zoo': '¡Ya conoces muchos animales!',
-    'numbers': '¡Los números son tus amigos!',
-    'geo': '¡Eres una gran exploradora!'
+    zoo: '¡Ya conoces muchos animales!',
+    numbers: '¡Los números son tus amigos!',
+    geo: '¡Eres un gran explorador!',
+    colors: '¡Ya conoces todos los colores!'
   };
-  document.getElementById('summarySubtitle').textContent = subtitles[mode] || 'Sofía y Noa están muy orgullosas de ti';
+  document.getElementById('summarySubtitle').textContent = 
+    subtitles[currentMode] || 'Has completado el juego';
   
   showScreen('summary');
-  
-  // Lanzar confeti
-  setTimeout(launchConfetti, 300);
+  setTimeout(launchConfetti, 200);
 }
 
-// ========================================
-// EFECTOS VISUALES
-// ========================================
+// ============================================
+// CONFETTI EFFECT
+// ============================================
 function launchConfetti() {
   const container = document.getElementById('confettiContainer');
   container.innerHTML = '';
   
-  const colors = ['#FFD700', '#FF4500', '#00E676', '#4FC3F7', '#FF80AB', '#B388FF'];
-  const shapes = ['circle', 'square'];
+  const colors = ['#6366f1', '#a78bfa', '#818cf8', '#c4b5fd', '#8b5cf6', '#4f46e5'];
   
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 60; i++) {
     const confetti = document.createElement('div');
     confetti.className = 'confetti';
     confetti.style.left = Math.random() * 100 + '%';
     confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-    confetti.style.animationDelay = Math.random() * 0.5 + 's';
-    
-    if (shapes[Math.floor(Math.random() * shapes.length)] === 'square') {
-      confetti.style.borderRadius = '2px';
-    }
-    
+    confetti.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
+    confetti.style.animationDelay = Math.random() * 0.8 + 's';
+    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    confetti.style.width = (Math.random() * 6 + 6) + 'px';
+    confetti.style.height = (Math.random() * 6 + 6) + 'px';
     container.appendChild(confetti);
   }
   
-  // Limpiar confeti después de la animación
-  setTimeout(() => {
-    container.innerHTML = '';
-  }, 4000);
+  setTimeout(() => container.innerHTML = '', 4500);
 }
 
-function initParticles() {
-  const bg = document.getElementById('bgParticles');
-  bg.innerHTML = '';
-  
-  const particleCount = window.innerWidth < 600 ? 10 : 20;
-  const emojis = ['⭐', '✨', '💫', '🌟', '🎈', '🎀', '💖', '🦋'];
-  
-  for (let i = 0; i < particleCount; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    p.style.left = Math.random() * 100 + '%';
-    p.style.top = Math.random() * 100 + '%';
-    p.style.fontSize = (Math.random() * 15 + 10) + 'px';
-    p.style.animationDuration = (Math.random() * 15 + 10) + 's';
-    p.style.animationDelay = Math.random() * 5 + 's';
-    bg.appendChild(p);
-  }
-}
-
-// ========================================
-// PREVENCIÓN DE COMPORTAMIENTOS MÓVILES
-// ========================================
+// ============================================
+// MOBILE PREVENTIONS
+// ============================================
 function preventMobileIssues() {
-  // Prevenir zoom con doble tap
+  // Prevent double-tap zoom
   let lastTouchEnd = 0;
-  document.addEventListener('touchend', function(event) {
+  document.addEventListener('touchend', function(e) {
     const now = Date.now();
     if (now - lastTouchEnd <= 300) {
-      event.preventDefault();
+      e.preventDefault();
     }
     lastTouchEnd = now;
   }, { passive: false });
   
-  // Prevenir scroll en iOS Safari (excepto en contenedores scrollables)
+  // Prevent scroll on iOS
   document.addEventListener('touchmove', function(e) {
-    if (e.target.closest('.flags-container') || e.target.closest('.summary-words-container') || e.target.closest('#summary')) {
-      return;
+    const scrollable = e.target.closest('.summary, .flags-container, .names-container');
+    if (!scrollable) {
+      e.preventDefault();
     }
-    e.preventDefault();
   }, { passive: false });
   
-  // Manejar cambios de orientación
-  window.addEventListener('orientationchange', function() {
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 100);
+  // Handle orientation change
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => window.scrollTo(0, 0), 100);
   });
 }
 
-// ========================================
-// SOPORTE PARA TECLADO
-// ========================================
+// ============================================
+// KEYBOARD SUPPORT
+// ============================================
 function initKeyboardSupport() {
-  document.querySelectorAll('.game-card, .menu-card').forEach(card => {
+  document.querySelectorAll('.game-card').forEach(card => {
     card.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -1854,14 +2548,18 @@ function initKeyboardSupport() {
   });
 }
 
-// ========================================
-// INICIALIZACIÓN
-// ========================================
+// ============================================
+// INITIALIZATION
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
   loadSettings();
-  initParticles();
   preventMobileIssues();
   initKeyboardSupport();
+  
+  // Preload voices for speech synthesis
+  if (window.speechSynthesis) {
+    window.speechSynthesis.getVoices();
+  }
 });
 </script>
 </body>
