@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name="theme-color" content="#faf5ff">
-<title>Sofía y Noa - Aprende Jugando</title>
+<title>Sofía y Noa - Aprende Jugando V9</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -1162,6 +1162,304 @@ body {
   font-style: italic;
 }
 
+/* NUMBERS GAME - APPLE STYLE */
+.number-intro-card-apple {
+  padding: 24px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-2xl);
+  border: 2px solid var(--glass-border);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-ios);
+}
+.number-intro-card-apple:hover { transform: scale(1.02); }
+.number-intro-card-apple:active { transform: scale(0.98); }
+
+.number-display-container {
+  margin-bottom: 16px;
+}
+
+.number-big-apple {
+  font-size: 5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  animation: numberPulse 2s ease-in-out infinite;
+}
+@keyframes numberPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.number-objects-apple {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.number-object-apple {
+  font-size: 1.8rem;
+  animation: objectBounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+@keyframes objectBounceIn {
+  0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.number-bilingual-card {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, rgba(0, 77, 152, 0.1), rgba(165, 0, 68, 0.1));
+  border-radius: var(--radius-xl);
+  margin-bottom: 12px;
+}
+
+.number-word-local {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--barca-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.number-divider {
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--barca-blue), transparent);
+  margin: 6px auto;
+}
+
+.number-word-en {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.tap-hint {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* Numbers counting and options */
+.numbers-instruction-card,
+.numbers-question-card {
+  padding: 12px 16px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--glass-border);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.numbers-instruction-text,
+.numbers-question-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.counting-objects-apple {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-2xl);
+  border: 2px solid var(--glass-border);
+}
+
+.counting-item-apple {
+  font-size: 2rem;
+  padding: 8px;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  touch-action: manipulation;
+}
+.counting-item-apple:hover { transform: scale(1.1); }
+.counting-item-apple.touched {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  transform: scale(1.15) rotate(5deg);
+}
+.counting-item-apple.static {
+  cursor: default;
+}
+.counting-item-apple.static:hover { transform: none; }
+
+.count-options-apple {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.count-option-apple {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  background: var(--color-surface);
+  border: 3px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: var(--shadow-ios);
+}
+.count-option-apple:hover { transform: scale(1.1); }
+.count-option-apple:active { transform: scale(0.95); }
+.count-option-apple.correct {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  border-color: var(--color-success);
+  animation: correctPop 0.4s ease;
+}
+@keyframes correctPop {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+.count-option-apple.wrong {
+  animation: shake 0.4s ease;
+  border-color: var(--color-error);
+  background: #fef2f2;
+}
+
+/* Order game */
+.order-slots-apple {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.order-slot-apple {
+  width: 48px;
+  height: 48px;
+  border: 3px dashed #9ca3af;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: transparent;
+  transition: all 0.2s ease;
+}
+.order-slot-apple.filled {
+  border-style: solid;
+  border-color: var(--color-success);
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  color: var(--color-text);
+}
+.order-slot-apple.wrong {
+  background: #fef2f2;
+  border-color: var(--color-error);
+}
+
+.order-items-apple {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.count-option-apple.order-item.used {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Number feedback popup */
+.number-feedback-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: var(--color-surface);
+  padding: 20px 28px;
+  border-radius: var(--radius-2xl);
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  z-index: 400;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 4px solid transparent;
+}
+.number-feedback-popup.show {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  border-color: var(--color-success);
+}
+
+.number-feedback-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin: 0 auto 10px;
+  color: white;
+}
+.number-feedback-icon.correct {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+.number-feedback-icon.wrong {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.number-feedback-number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.number-feedback-bilingual {
+  margin-top: 8px;
+  padding: 8px 16px;
+  background: rgba(0, 77, 152, 0.1);
+  border-radius: var(--radius-lg);
+}
+
+.number-feedback-local {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--barca-blue);
+  text-transform: uppercase;
+}
+
+.number-feedback-en {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* Sofia question style */
+.sofia-capital-question {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-top: 6px;
+}
+
 /* MASCOT THEME COLORS - AMBIENTACIÓN */
 :root {
   --mascot-primary: #faf5ff;
@@ -1782,6 +2080,282 @@ body.mascot-cat .bg-layer-mascot {
   0%, 100% { box-shadow: 0 2px 8px rgba(0,122,255,0.3); }
   50% { box-shadow: 0 2px 16px rgba(0,122,255,0.5); }
 }
+/* Catalan Flag Button */
+.lang-btn.catalan-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 10px;
+}
+.lang-btn .flag-svg {
+  width: 20px;
+  height: 14px;
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Coming Soon Modal - Apple Style */
+.coming-soon-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.coming-soon-modal.active {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+.coming-soon-card {
+  background: var(--color-surface);
+  border-radius: 24px;
+  padding: 32px 28px;
+  max-width: 340px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes modalSlideIn {
+  0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.coming-soon-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 16px;
+  background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  animation: iconPulse 2s ease-in-out infinite;
+}
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 77, 152, 0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(0, 77, 152, 0); }
+}
+.coming-soon-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+.coming-soon-subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.coming-soon-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, rgba(0, 77, 152, 0.08), rgba(165, 0, 68, 0.08));
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.coming-soon-brand-logo {
+  font-size: 1.2rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.coming-soon-progress {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.coming-soon-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--barca-blue);
+  animation: dotBounce 1.4s ease-in-out infinite;
+}
+.coming-soon-dot:nth-child(2) { animation-delay: 0.2s; }
+.coming-soon-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes dotBounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+  40% { transform: scale(1); opacity: 1; }
+}
+.coming-soon-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-family: var(--font-family);
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.coming-soon-btn:hover { transform: scale(1.02); }
+.coming-soon-btn:active { transform: scale(0.98); }
+
+/* Song Player Styles - Apple Style */
+.song-card {
+  background: linear-gradient(135deg, rgba(165, 0, 68, 0.15) 0%, rgba(0, 77, 152, 0.15) 100%) !important;
+}
+.song-card .game-icon {
+  animation: songIconPulse 2s ease-in-out infinite;
+}
+@keyframes songIconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.song-player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 360px;
+  width: 100%;
+}
+
+.song-cover-art {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 20px;
+  animation: coverFloat 3s ease-in-out infinite;
+}
+@keyframes coverFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+.song-cover-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 10px 30px rgba(0, 77, 152, 0.3));
+}
+
+.song-player-title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.song-player-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.song-controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.song-control-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 20px rgba(0, 77, 152, 0.4);
+}
+.song-control-btn svg {
+  width: 28px;
+  height: 28px;
+}
+.song-control-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(0, 77, 152, 0.5);
+}
+.song-control-btn:active {
+  transform: scale(0.95);
+}
+.song-control-btn.secondary {
+  width: 50px;
+  height: 50px;
+  background: var(--color-surface);
+  border: 3px solid var(--glass-border);
+  color: var(--color-text);
+  box-shadow: var(--shadow-ios);
+}
+.song-control-btn.secondary svg {
+  width: 22px;
+  height: 22px;
+}
+.song-control-btn.secondary:hover {
+  border-color: var(--barca-red);
+  color: var(--barca-red);
+}
+
+.song-progress-bar {
+  width: 100%;
+  max-width: 280px;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.song-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--barca-blue), var(--barca-red));
+  border-radius: 10px;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.song-visualizer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
+  height: 40px;
+}
+.visualizer-bar {
+  width: 6px;
+  height: 10px;
+  background: linear-gradient(to top, var(--barca-blue), var(--barca-red));
+  border-radius: 3px;
+  transition: height 0.1s ease;
+}
+.song-visualizer.playing .visualizer-bar {
+  animation: visualizerBounce 0.5s ease-in-out infinite alternate;
+}
+.visualizer-bar:nth-child(1) { animation-delay: 0s; }
+.visualizer-bar:nth-child(2) { animation-delay: 0.1s; }
+.visualizer-bar:nth-child(3) { animation-delay: 0.2s; }
+.visualizer-bar:nth-child(4) { animation-delay: 0.3s; }
+.visualizer-bar:nth-child(5) { animation-delay: 0.2s; }
+.visualizer-bar:nth-child(6) { animation-delay: 0.1s; }
+.visualizer-bar:nth-child(7) { animation-delay: 0.15s; }
+.visualizer-bar:nth-child(8) { animation-delay: 0.25s; }
+
+@keyframes visualizerBounce {
+  0% { height: 10px; }
+  100% { height: 35px; }
+}
 
 /* Welcome Mascot Animation */
 .welcome-mascot {
@@ -1905,6 +2479,24 @@ body.mascot-cat .bg-layer-mascot {
   <button class="song-close" onclick="closeSongModal()" data-key="close">Cerrar</button>
 </div>
 
+<!-- COMING SOON MODAL - Expliacalia System -->
+<div class="coming-soon-modal" id="comingSoonModal">
+  <div class="coming-soon-card">
+    <div class="coming-soon-icon">🎵</div>
+    <h2 class="coming-soon-title" id="comingSoonTitle">Módulo en construcción</h2>
+    <p class="coming-soon-subtitle" id="comingSoonText">El módulo musical de SofiNoa está siendo desarrollado por el equipo de Explicalia System. Próximamente estará disponible para que puedas cantar junto a Sofía y Noa.</p>
+    <div class="coming-soon-brand">
+      <span class="coming-soon-brand-logo">✨ Explicalia System</span>
+    </div>
+    <div class="coming-soon-progress">
+      <div class="coming-soon-dot"></div>
+      <div class="coming-soon-dot"></div>
+      <div class="coming-soon-dot"></div>
+    </div>
+    <button class="coming-soon-btn" onclick="closeComingSoonModal()" id="comingSoonBtn">Entendido</button>
+  </div>
+</div>
+
 <div class="bg-layer"></div>
 
 <!-- WELCOME SCREEN -->
@@ -1940,12 +2532,6 @@ body.mascot-cat .bg-layer-mascot {
       <rect class="bulb-base" x="15" y="32" width="10" height="3" rx="1"/>
       <rect class="bulb-base" x="16" y="35" width="8" height="2" rx="1"/>
       <rect class="bulb-base" x="17" y="37" width="6" height="2" rx="1"/>
-    </svg>
-  </button>
-  
-  <button class="music-trigger" id="musicBtn" onclick="toggleSong()" aria-label="La canción de Sofía y Noa" title="La canción de Sofía y Noa">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
     </svg>
   </button>
   
@@ -2001,12 +2587,6 @@ body.mascot-cat .bg-layer-mascot {
     </svg>
   </button>
   
-  <button class="music-trigger" id="musicBtn2" onclick="toggleSong()" aria-label="La canción de Sofía y Noa" title="La canción de Sofía y Noa">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-    </svg>
-  </button>
-  
   <div class="menu-header">
     <div class="greeting" data-key="welcome-back">Bienvenido/a de nuevo</div>
     <h1 class="menu-title" data-key="what-learn">¿Qué quieres aprender hoy?</h1>
@@ -2014,7 +2594,7 @@ body.mascot-cat .bg-layer-mascot {
       <div class="avatar-mascot" id="menuMascot">🧸</div>
       <div class="player-stats">
         <div class="player-name" id="playerNameDisplay">Sofía</div>
-        <div class="player-level" id="playerLevelDisplay">Nivel 1</div>
+        <div class="player-level" id="playerLevelDisplay"></div>
         <div class="player-stars" id="playerStarsDisplay">⭐ 0</div>
       </div>
     </div>
@@ -2054,6 +2634,11 @@ body.mascot-cat .bg-layer-mascot {
       <div class="game-title" data-key="game-music">La música de Sofía y Noa</div>
       <div class="game-levels" id="musicLevels"></div>
     </div>
+    <div class="game-card song-card" onclick="openSongPlayer()">
+      <div class="game-icon">🎵</div>
+      <div class="game-title">La canción de SofiNoa</div>
+      <div class="game-levels" id="songLevels"></div>
+    </div>
   </div>
   <div class="language-selector">
     <div class="language-label" data-key="language">Idioma / Language:</div>
@@ -2062,6 +2647,17 @@ body.mascot-cat .bg-layer-mascot {
       <button class="lang-btn" onclick="setLanguage('en')">🇬🇧 EN</button>
       <button class="lang-btn" onclick="setLanguage('ro')">🇷🇴 RO</button>
       <button class="lang-btn" onclick="setLanguage('fr')">🇫🇷 FR</button>
+      <button class="lang-btn" onclick="setLanguage('it')">🇮🇹 IT</button>
+      <button class="lang-btn catalan-btn" onclick="setLanguage('ca')">
+        <svg class="flag-svg" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg">
+          <rect width="24" height="16" fill="#FFC107"/>
+          <rect y="3.2" width="24" height="3.2" fill="#D32F2F"/>
+          <rect y="9.6" width="24" height="3.2" fill="#D32F2F"/>
+        </svg>
+        CA
+      </button>
+      <button class="lang-btn" onclick="setLanguage('de')">🇩🇪 DE</button>
+      <button class="lang-btn" onclick="setLanguage('nl')">🇳🇱 NL</button>
     </div>
   </div>
   <div class="settings-row">
@@ -2085,7 +2681,7 @@ body.mascot-cat .bg-layer-mascot {
   <div class="game-top-bar">
     <button class="back-btn" onclick="exitGame()">←</button>
     <button class="menu-btn" onclick="goToMenu()">🏠 <span data-key="menu">Menú</span></button>
-    <div class="game-level-badge" id="levelBadge">Nivel 1</div>
+    <div class="game-level-badge" id="levelBadge"></div>
     <div class="progress-stars" id="progressStars"></div>
   </div>
   <div class="game-instruction">
@@ -2096,6 +2692,65 @@ body.mascot-cat .bg-layer-mascot {
   <div class="game-area" id="sofiaArea"><div class="sofia-container" id="sofiaContainer"></div></div>
   <div class="game-area" id="colorsArea"><div class="colors-container" id="colorsContainer"></div></div>
   <div class="game-area" id="musicArea"><div class="music-container" id="musicContainer"></div></div>
+  <div class="game-area" id="songArea">
+    <div class="song-player-container">
+      <div class="song-cover-art">
+        <svg class="song-cover-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="songGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#004D98"/>
+              <stop offset="100%" style="stop-color:#A50044"/>
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="100" r="90" fill="url(#songGradient)"/>
+          <circle cx="100" cy="100" r="70" fill="#FFD700" opacity="0.9"/>
+          <text x="100" y="85" text-anchor="middle" font-size="40" fill="#004D98">🎵</text>
+          <text x="100" y="130" text-anchor="middle" font-size="14" font-weight="bold" fill="#004D98">SofiNoa</text>
+          <circle cx="60" cy="50" r="8" fill="#FFF" opacity="0.8">
+            <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="140" cy="50" r="6" fill="#FFF" opacity="0.8">
+            <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="100" cy="170" r="7" fill="#FFF" opacity="0.8">
+            <animate attributeName="opacity" values="0.6;1;0.6" dur="1.2s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <h2 class="song-player-title">La canción de SofiNoa</h2>
+      <p class="song-player-subtitle" data-key="song-subtitle">¡Escucha y canta con nosotros!</p>
+      <div class="song-controls">
+        <button class="song-control-btn" id="playBtn" onclick="playSong()">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+        <button class="song-control-btn" id="pauseBtn" onclick="pauseSong()" style="display:none;">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+        </button>
+        <button class="song-control-btn secondary" id="stopBtn" onclick="stopSong()">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 6h12v12H6z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="song-progress-bar">
+        <div class="song-progress-fill" id="songProgressFill"></div>
+      </div>
+      <div class="song-visualizer" id="songVisualizer">
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+        <div class="visualizer-bar"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- PEDAGOGICAL POPUP -->
@@ -2150,54 +2805,258 @@ body.mascot-cat .bg-layer-mascot {
 <script>
 // === TRANSLATIONS SYSTEM ===
 const TRANSLATIONS = {
-  'welcome-title': { es: '¡Hola, pequeño/a!', en: 'Hello, little one!', ro: 'Bună, micuțule/a!', fr: 'Bonjour, petit/e !' },
-  'welcome-subtitle': { es: '¿Cómo te llamas? Tu papá o mamá puede escribir tu nombre', en: 'What is your name? Your mom or dad can write it', ro: 'Cum te numești? Mami sau tati poate să scrie numele tău', fr: 'Comment t\'appelles-tu ? Ton papa ou ta maman peut écrire ton nom' },
-  'choose-mascot': { es: 'Elige tu mascota:', en: 'Choose your mascot:', ro: 'Alege-ți mascotă:', fr: 'Choisis ta mascotte :' },
-  'start-adventure': { es: '¡Comenzar aventura!', en: 'Start adventure!', ro: 'Începe aventura!', fr: 'Commencer l\'aventure !' },
-  'welcome-back': { es: '¡Bienvenido/a de nuevo!', en: 'Welcome back!', ro: 'Bine ai revenit!', fr: 'Bienvenue à nouveau !' },
-  'what-learn': { es: '¿Qué quieres aprender hoy?', en: 'What do you want to learn today?', ro: 'Ce vrei să înveți azi?', fr: 'Que veux-tu apprendre aujourd\'hui ?' },
-  'total-progress': { es: 'Progreso total', en: 'Total progress', ro: 'Progres total', fr: 'Progression totale' },
-  'language': { es: 'Idioma / Language:', en: 'Language / Langue:', ro: 'Limbă / Language:', fr: 'Langue / Language:' },
-  'change-name': { es: 'Cambiar nombre', en: 'Change name', ro: 'Schimbă numele', fr: 'Changer le nom' },
-  'reset': { es: 'Reiniciar', en: 'Reset', ro: 'Resetare', fr: 'Réinitialiser' },
-  'menu': { es: 'Menú', en: 'Menu', ro: 'Meniu', fr: 'Menu' },
-  'find-pairs': { es: '¡Encuentra las parejas!', en: 'Find the pairs!', ro: 'Găsește perechile!', fr: 'Trouve les paires !' },
-  'level-complete': { es: '¡Completaste el nivel!', en: 'You completed the level!', ro: 'Ai completat nivelul!', fr: 'Tu as complété le niveau !' },
-  'words-learned': { es: '📚 Palabras aprendidas', en: '📚 Words learned', ro: '📚 Cuvinte învățate', fr: '📚 Mots appris' },
-  'next-level': { es: 'Siguiente nivel', en: 'Next level', ro: 'Nivelul următor', fr: 'Niveau suivant' },
-  'back-menu': { es: 'Volver al menú', en: 'Back to menu', ro: 'Înapoi la meniu', fr: 'Retour au menu' },
-  'lets-play': { es: '¡Vamos a jugar!', en: 'Let\'s play!', ro: 'Să jucăm!', fr: 'Jouons !' },
-  'tap-to-start': { es: 'Toca para comenzar', en: 'Tap to start', ro: 'Atinge pentru a începe', fr: 'Touche pour commencer' },
-  'close': { es: 'Cerrar', en: 'Close', ro: 'Închide', fr: 'Fermer' },
-  'your-name': { es: 'Tu nombre...', en: 'Your name...', ro: 'Numele tău...', fr: 'Ton nom...' },
-  'game-zoo': { es: 'El Gran Zoo', en: 'The Big Zoo', ro: 'Marea Grădină Zoologică', fr: 'Le Grand Zoo' },
-  'game-numbers': { es: 'Números', en: 'Numbers', ro: 'Numere', fr: 'Nombres' },
-  'game-sofia': { es: 'El Mundo de Sofía', en: "Sofia's World", ro: 'Lumea Sofiei', fr: 'Le Monde de Sofía' },
-  'game-colors': { es: 'Los colores de Noa', en: "Noa's Colors", ro: 'Culorile lui Noa', fr: 'Les couleurs de Noa' },
-  'game-music': { es: 'La música de Sofía y Noa', en: "Sofia and Noa's Music", ro: 'Muzica Sofiei și a lui Noa', fr: 'La musique de Sofía et Noa' },
-  'music-free-title': { es: '🎹 Piano Libre', en: '🎹 Free Piano', ro: '🎹 Pian Liber', fr: '🎹 Piano Libre' },
-  'music-free-instr': { es: '¡Toca las teclas para hacer música!', en: 'Tap the keys to make music!', ro: 'Atinge tastele pentru a face muzică!', fr: 'Touche les touches pour faire de la musique !' },
-  'music-simon-instr': { es: 'Escucha la secuencia...', en: 'Listen to the sequence...', ro: 'Ascultă secvența...', fr: 'Écoute la séquence...' },
-  'music-your-turn': { es: '¡Tu turno! Repite la secuencia', en: 'Your turn! Repeat the sequence', ro: 'Rândul tău! Repetă secvența', fr: 'À toi ! Répète la séquence' },
-  'music-listen-again': { es: 'Escucha de nuevo...', en: 'Listen again...', ro: 'Ascultă din nou...', fr: 'Écoute encore...' },
-  'music-round': { es: 'Ronda', en: 'Round', ro: 'Runda', fr: 'Tour' },
-  'music-notes': { es: 'notas', en: 'notes', ro: 'note', fr: 'notes' },
-  'learn-music': { es: '🎵 Aprende Música', en: '🎵 Learn Music', ro: '🎵 Învață Muzică', fr: '🎵 Apprends la Musique' },
-  'music-intro-text': { es: 'Vamos a tocar las notas del piano. ¡Escucha y repite!', en: 'Let\'s play piano notes. Listen and repeat!', ro: 'Vom cânta notele la pian. Ascultă și repetă!', fr: 'Nous allons jouer les notes du piano. Écoute et répète !' },
-  'barca-intro-text': { es: '¡Vamos a aprender el Himno del Barça! Escucha las notas.', en: 'Let\'s learn the Barça Anthem! Listen to the notes.', ro: 'Să învățăm Imnul Barça! Ascultă notele.', fr: 'Apprenons l\'Hymne du Barça ! Écoute les notes.' },
+  'welcome-title': { 
+    es: '¡Hola, pequeño/a!', en: 'Hello, little one!', ro: 'Bună, micuțule/a!', fr: 'Bonjour, petit/e !',
+    it: 'Ciao, piccolo/a!', ca: 'Hola, petit/a!', de: 'Hallo, Kleine/r!', nl: 'Hallo, kleintje!' 
+  },
+  'welcome-subtitle': { 
+    es: '¿Cómo te llamas? Tu papá o mamá puede escribir tu nombre', 
+    en: 'What is your name? Your mom or dad can write it', 
+    ro: 'Cum te numești? Mami sau tati poate să scrie numele tău', 
+    fr: 'Comment t\'appelles-tu ? Ton papa ou ta maman peut écrire ton nom',
+    it: 'Come ti chiami? La tua mamma o il tuo papà può scrivere il tuo nome',
+    ca: 'Com et dius? El teu pare o mare pot escriure el teu nom',
+    de: 'Wie heißt du? Dein Papa oder deine Mama kann deinen Namen schreiben',
+    nl: 'Hoe heet je? Je papa of mama kan je naam schrijven'
+  },
+  'choose-mascot': { 
+    es: 'Elige tu mascota:', en: 'Choose your mascot:', ro: 'Alege-ți mascotă:', fr: 'Choisis ta mascotte :',
+    it: 'Scegli la tua mascotte:', ca: 'Tria la teva mascota:', de: 'Wähle dein Maskottchen:', nl: 'Kies je mascotte:' 
+  },
+  'start-adventure': { 
+    es: '¡Comenzar aventura!', en: 'Start adventure!', ro: 'Începe aventura!', fr: 'Commencer l\'aventure !',
+    it: 'Inizia l\'avventura!', ca: 'Comença l\'aventura!', de: 'Abenteuer starten!', nl: 'Begin avontuur!' 
+  },
+  'welcome-back': { 
+    es: '¡Bienvenido/a de nuevo!', en: 'Welcome back!', ro: 'Bine ai revenit!', fr: 'Bienvenue à nouveau !',
+    it: 'Bentornato/a!', ca: 'Benvingut/da de nou!', de: 'Willkommen zurück!', nl: 'Welkom terug!' 
+  },
+  'what-learn': { 
+    es: '¿Qué quieres aprender hoy?', en: 'What do you want to learn today?', ro: 'Ce vrei să înveți azi?', fr: 'Que veux-tu apprendre aujourd\'hui ?',
+    it: 'Cosa vuoi imparare oggi?', ca: 'Què vols aprendre avui?', de: 'Was möchtest du heute lernen?', nl: 'Wat wil je vandaag leren?' 
+  },
+  'total-progress': { 
+    es: 'Progreso total', en: 'Total progress', ro: 'Progres total', fr: 'Progression totale',
+    it: 'Progresso totale', ca: 'Progrés total', de: 'Gesamtfortschritt', nl: 'Totale voortgang' 
+  },
+  'language': { 
+    es: 'Idioma / Language:', en: 'Language / Langue:', ro: 'Limbă / Language:', fr: 'Langue / Language:',
+    it: 'Lingua / Language:', ca: 'Idioma / Language:', de: 'Sprache / Language:', nl: 'Taal / Language:' 
+  },
+  'change-name': { 
+    es: 'Cambiar nombre', en: 'Change name', ro: 'Schimbă numele', fr: 'Changer le nom',
+    it: 'Cambia nome', ca: 'Canvia nom', de: 'Namen ändern', nl: 'Naam wijzigen' 
+  },
+  'reset': { 
+    es: 'Reiniciar', en: 'Reset', ro: 'Resetare', fr: 'Réinitialiser',
+    it: 'Ricomincia', ca: 'Reiniciar', de: 'Zurücksetzen', nl: 'Opnieuw' 
+  },
+  'menu': { 
+    es: 'Menú', en: 'Menu', ro: 'Meniu', fr: 'Menu',
+    it: 'Menù', ca: 'Menú', de: 'Menü', nl: 'Menu' 
+  },
+  'find-pairs': { 
+    es: '¡Encuentra las parejas!', en: 'Find the pairs!', ro: 'Găsește perechile!', fr: 'Trouve les paires !',
+    it: 'Trova le coppie!', ca: 'Troba les parelles!', de: 'Finde die Paare!', nl: 'Vind de paren!' 
+  },
+  'level-complete': { 
+    es: '¡Completaste el nivel!', en: 'You completed the level!', ro: 'Ai completat nivelul!', fr: 'Tu as complété le niveau !',
+    it: 'Hai completato il livello!', ca: 'Has completat el nivell!', de: 'Du hast das Level abgeschlossen!', nl: 'Je hebt het level voltooid!' 
+  },
+  'words-learned': { 
+    es: '📚 Palabras aprendidas', en: '📚 Words learned', ro: '📚 Cuvinte învățate', fr: '📚 Mots appris',
+    it: '📚 Parole imparate', ca: '📚 Paraules apreses', de: '📚 Gelernte Wörter', nl: '📚 Geleerde woorden' 
+  },
+  'next-level': { 
+    es: 'Siguiente nivel', en: 'Next level', ro: 'Nivelul următor', fr: 'Niveau suivant',
+    it: 'Livello successivo', ca: 'Nivell següent', de: 'Nächstes Level', nl: 'Volgend level' 
+  },
+  'back-menu': { 
+    es: 'Volver al menú', en: 'Back to menu', ro: 'Înapoi la meniu', fr: 'Retour au menu',
+    it: 'Torna al menù', ca: 'Torna al menú', de: 'Zurück zum Menü', nl: 'Terug naar menu' 
+  },
+  'lets-play': { 
+    es: '¡Vamos a jugar!', en: 'Let\'s play!', ro: 'Să jucăm!', fr: 'Jouons !',
+    it: 'Giochiamo!', ca: 'Juguem!', de: 'Lass uns spielen!', nl: 'Laten we spelen!' 
+  },
+  'tap-to-start': { 
+    es: 'Toca para comenzar', en: 'Tap to start', ro: 'Atinge pentru a începe', fr: 'Touche pour commencer',
+    it: 'Tocca per iniziare', ca: 'Toca per començar', de: 'Tippe zum Starten', nl: 'Tik om te beginnen' 
+  },
+  'close': { 
+    es: 'Cerrar', en: 'Close', ro: 'Închide', fr: 'Fermer',
+    it: 'Chiudi', ca: 'Tancar', de: 'Schließen', nl: 'Sluiten' 
+  },
+  'your-name': { 
+    es: 'Tu nombre...', en: 'Your name...', ro: 'Numele tău...', fr: 'Ton nom...',
+    it: 'Il tuo nome...', ca: 'El teu nom...', de: 'Dein Name...', nl: 'Je naam...' 
+  },
+  'game-zoo': { 
+    es: 'El Gran Zoo', en: 'The Big Zoo', ro: 'Marea Grădină Zoologică', fr: 'Le Grand Zoo',
+    it: 'Il Grande Zoo', ca: 'El Gran Zoo', de: 'Der Große Zoo', nl: 'De Grote Dierentuin' 
+  },
+  'game-numbers': { 
+    es: 'Números', en: 'Numbers', ro: 'Numere', fr: 'Nombres',
+    it: 'Numeri', ca: 'Números', de: 'Zahlen', nl: 'Cijfers' 
+  },
+  'game-sofia': { 
+    es: 'El Mundo de Sofía', en: "Sofia's World", ro: 'Lumea Sofiei', fr: 'Le Monde de Sofía',
+    it: 'Il Mondo di Sofia', ca: 'El Món de Sofia', de: 'Sofias Welt', nl: 'Sofia\'s Wereld' 
+  },
+  'game-colors': { 
+    es: 'Los colores de Noa', en: "Noa's Colors", ro: 'Culorile lui Noa', fr: 'Les couleurs de Noa',
+    it: 'I colori di Noa', ca: 'Els colors de Noa', de: 'Noas Farben', nl: 'Noa\'s kleuren' 
+  },
+  'game-music': { 
+    es: 'La música de Sofía y Noa', en: "Sofia and Noa's Music", ro: 'Muzica Sofiei și a lui Noa', fr: 'La musique de Sofía et Noa',
+    it: 'La musica di Sofia e Noa', ca: 'La música de Sofia i Noa', de: 'Sofias und Noas Musik', nl: 'Sofia en Noa\'s muziek' 
+  },
+  'music-free-title': { 
+    es: '🎹 Piano Libre', en: '🎹 Free Piano', ro: '🎹 Pian Liber', fr: '🎹 Piano Libre',
+    it: '🎹 Piano Libero', ca: '🎹 Piano Lliure', de: '🎹 Freies Klavier', nl: '🎹 Vrije Piano' 
+  },
+  'music-free-instr': { 
+    es: '¡Toca las teclas para hacer música!', en: 'Tap the keys to make music!', ro: 'Atinge tastele pentru a face muzică!', fr: 'Touche les touches pour faire de la musique !',
+    it: 'Tocca i tasti per fare musica!', ca: 'Toca les tecles per fer música!', de: 'Tippe auf die Tasten um Musik zu machen!', nl: 'Tik op de toetsen om muziek te maken!' 
+  },
+  'music-simon-instr': { 
+    es: 'Escucha la secuencia...', en: 'Listen to the sequence...', ro: 'Ascultă secvența...', fr: 'Écoute la séquence...',
+    it: 'Ascolta la sequenza...', ca: 'Escolta la seqüència...', de: 'Höre die Sequenz...', nl: 'Luister naar de reeks...' 
+  },
+  'music-your-turn': { 
+    es: '¡Tu turno! Repite la secuencia', en: 'Your turn! Repeat the sequence', ro: 'Rândul tău! Repetă secvența', fr: 'À toi ! Répète la séquence',
+    it: 'Il tuo turno! Ripeti la sequenza', ca: 'El teu torn! Repeteix la seqüència', de: 'Du bist dran! Wiederhole die Sequenz', nl: 'Jouw beurt! Herhaal de reeks' 
+  },
+  'music-listen-again': { 
+    es: 'Escucha de nuevo...', en: 'Listen again...', ro: 'Ascultă din nou...', fr: 'Écoute encore...',
+    it: 'Ascolta di nuovo...', ca: 'Escolta de nou...', de: 'Höre nochmal...', nl: 'Luister opnieuw...' 
+  },
+  'music-round': { 
+    es: 'Ronda', en: 'Round', ro: 'Runda', fr: 'Tour',
+    it: 'Turno', ca: 'Ronda', de: 'Runde', nl: 'Ronde' 
+  },
+  'music-notes': { 
+    es: 'notas', en: 'notes', ro: 'note', fr: 'notes',
+    it: 'note', ca: 'notes', de: 'Noten', nl: 'noten' 
+  },
+  'learn-music': { 
+    es: '🎵 Aprende Música', en: '🎵 Learn Music', ro: '🎵 Învață Muzică', fr: '🎵 Apprends la Musique',
+    it: '🎵 Impara la Musica', ca: '🎵 Aprèn Música', de: '🎵 Lerne Musik', nl: '🎵 Leer Muziek' 
+  },
+  'music-intro-text': { 
+    es: 'Vamos a tocar las notas del piano. ¡Escucha y repite!', en: 'Let\'s play piano notes. Listen and repeat!', ro: 'Vom cânta notele la pian. Ascultă și repetă!', fr: 'Nous allons jouer les notes du piano. Écoute et répète !',
+    it: 'Suoniamo le note del pianoforte. Ascolta e ripeti!', ca: 'Tocarem les notes del piano. Escolta i repeteix!', de: 'Wir spielen Klaviernoten. Höre zu und wiederhole!', nl: 'We spelen pianonoten. Luister en herhaal!' 
+  },
+  'barca-intro-text': { 
+    es: '¡Vamos a aprender el Himno del Barça! Escucha las notas.', en: 'Let\'s learn the Barça Anthem! Listen to the notes.', ro: 'Să învățăm Imnul Barça! Ascultă notele.', fr: 'Apprenons l\'Hymne du Barça ! Écoute les notes.',
+    it: 'Impariamo l\'Inno del Barça! Ascolta le note.', ca: 'Aprenem l\'Himne del Barça! Escolta les notes.', de: 'Lernen wir die Barça-Hymne! Höre die Noten.', nl: 'Laten we het Barça-volkslied leren! Luister naar de noten.' 
+  },
   // New translations for colors game
-  'learn-colors': { es: '¡Aprende los colores!', en: 'Learn the colors!', ro: 'Învață culorile!', fr: 'Apprends les couleurs !' },
-  'what-color': { es: '¿De qué color es', en: 'What color is', ro: 'De ce culoare este', fr: 'De quelle couleur est' },
-  'tap-correct': { es: 'Toca el color correcto 👆', en: 'Tap the correct color 👆', ro: 'Atinge culoarea corectă 👆', fr: 'Touche la bonne couleur 👆' },
-  'correct': { es: '¡Correcto!', en: 'Correct!', ro: 'Corect!', fr: 'Correct !' },
-  'try-again': { es: '¡Intenta de nuevo!', en: 'Try again!', ro: 'Încearcă din nou!', fr: 'Essaie encore !' },
+  'learn-colors': { 
+    es: '¡Aprende los colores!', en: 'Learn the colors!', ro: 'Învață culorile!', fr: 'Apprends les couleurs !',
+    it: 'Impara i colori!', ca: 'Aprèn els colors!', de: 'Lerne die Farben!', nl: 'Leer de kleuren!' 
+  },
+  'what-color': { 
+    es: '¿De qué color es', en: 'What color is', ro: 'De ce culoare este', fr: 'De quelle couleur est',
+    it: 'Di che colore è', ca: 'De quin color és', de: 'Welche Farbe hat', nl: 'Welke kleur heeft' 
+  },
+  'tap-correct': { 
+    es: 'Toca el color correcto 👆', en: 'Tap the correct color 👆', ro: 'Atinge culoarea corectă 👆', fr: 'Touche la bonne couleur 👆',
+    it: 'Tocca il colore corretto 👆', ca: 'Toca el color correcte 👆', de: 'Tippe auf die richtige Farbe 👆', nl: 'Tik op de juiste kleur 👆' 
+  },
+  'correct': { 
+    es: '¡Correcto!', en: 'Correct!', ro: 'Corect!', fr: 'Correct !',
+    it: 'Corretto!', ca: 'Correcte!', de: 'Richtig!', nl: 'Juist!' 
+  },
+  'try-again': { 
+    es: '¡Intenta de nuevo!', en: 'Try again!', ro: 'Încearcă din nou!', fr: 'Essaie encore !',
+    it: 'Riprova!', ca: 'Torna-ho a provar!', de: 'Versuche es nochmal!', nl: 'Probeer opnieuw!' 
+  },
   // Numbers game
-  'learn-numbers': { es: '¡Aprende los números!', en: 'Learn the numbers!', ro: 'Învață numerele!', fr: 'Apprends les nombres !' },
-  'count-objects': { es: '¡Toca cada objeto mientras cuentas!', en: 'Tap each object while counting!', ro: 'Atinge fiecare obiect în timp ce numeri!', fr: 'Touche chaque objet en comptant !' },
-  'how-many': { es: '¿Cuántos hay?', en: 'How many are there?', ro: 'Câte sunt?', fr: 'Combien y en a-t-il ?' },
+  'learn-numbers': { 
+    es: '¡Aprende los números!', en: 'Learn the numbers!', ro: 'Învață numerele!', fr: 'Apprends les nombres !',
+    it: 'Impara i numeri!', ca: 'Aprèn els números!', de: 'Lerne die Zahlen!', nl: 'Leer de cijfers!' 
+  },
+  'count-objects': { 
+    es: '¡Toca cada objeto mientras cuentas!', en: 'Tap each object while counting!', ro: 'Atinge fiecare obiect în timp ce numeri!', fr: 'Touche chaque objet en comptant !',
+    it: 'Tocca ogni oggetto mentre conti!', ca: 'Toca cada objecte mentre comptes!', de: 'Tippe jedes Objekt an während du zählst!', nl: 'Tik elk object aan terwijl je telt!' 
+  },
+  'how-many': { 
+    es: '¿Cuántos hay?', en: 'How many are there?', ro: 'Câte sunt?', fr: 'Combien y en a-t-il ?',
+    it: 'Quanti ce ne sono?', ca: 'Quants n\'hi ha?', de: 'Wie viele sind es?', nl: 'Hoeveel zijn er?' 
+  },
   // Sofia game
-  'learn-geography': { es: '¡Aprende geografía!', en: 'Learn geography!', ro: 'Învață geografie!', fr: 'Apprends la géographie !' },
-  'which-capital': { es: '¿Cuál es la capital?', en: 'What is the capital?', ro: 'Care este capitala?', fr: 'Quelle est la capitale ?' }
+  'learn-geography': { 
+    es: '¡Aprende geografía!', en: 'Learn geography!', ro: 'Învață geografie!', fr: 'Apprends la géographie !',
+    it: 'Impara la geografia!', ca: 'Aprèn geografia!', de: 'Lerne Geografie!', nl: 'Leer aardrijkskunde!' 
+  },
+  'which-capital': { 
+    es: '¿Cuál es la capital?', en: 'What is the capital?', ro: 'Care este capitala?', fr: 'Quelle est la capitale ?',
+    it: 'Qual è la capitale?', ca: 'Quina és la capital?', de: 'Was ist die Hauptstadt?', nl: 'Wat is de hoofdstad?' 
+  },
+  'song-subtitle': { 
+    es: '¡Escucha y canta con nosotros!', en: 'Listen and sing with us!', ro: 'Ascultă și cântă cu noi!', fr: 'Écoute et chante avec nous !',
+    it: 'Ascolta e canta con noi!', ca: 'Escolta i canta amb nosaltres!', de: 'Höre zu und sing mit uns!', nl: 'Luister en zing met ons mee!' 
+  },
+  // Level names - Zoo
+  'level-zoo-0': { es: 'Memoria Fácil', en: 'Easy Memory', ro: 'Memorie Ușoară', fr: 'Mémoire Facile', it: 'Memoria Facile', ca: 'Memòria Fàcil', de: 'Leichtes Gedächtnis', nl: 'Makkelijk Geheugen' },
+  'level-zoo-1': { es: 'Memoria Media', en: 'Medium Memory', ro: 'Memorie Medie', fr: 'Mémoire Moyenne', it: 'Memoria Media', ca: 'Memòria Mitjana', de: 'Mittleres Gedächtnis', nl: 'Gemiddeld Geheugen' },
+  'level-zoo-2': { es: 'Memoria Difícil', en: 'Hard Memory', ro: 'Memorie Dificilă', fr: 'Mémoire Difficile', it: 'Memoria Difficile', ca: 'Memòria Difícil', de: 'Schweres Gedächtnis', nl: 'Moeilijk Geheugen' },
+  'level-zoo-3': { es: 'Sonidos del Zoo', en: 'Zoo Sounds', ro: 'Sunete din Grădină', fr: 'Sons du Zoo', it: 'Suoni dello Zoo', ca: 'Sons del Zoo', de: 'Zoo Geräusche', nl: 'Dierentuin Geluiden' },
+  'level-zoo-4': { es: 'Safari Completo', en: 'Full Safari', ro: 'Safari Complet', fr: 'Safari Complet', it: 'Safari Completo', ca: 'Safari Complet', de: 'Kompletter Safari', nl: 'Volledige Safari' },
+  // Level names - Numbers
+  'level-num-0': { es: 'Conoce los Números', en: 'Meet the Numbers', ro: 'Cunoaște Numerele', fr: 'Découvre les Nombres', it: 'Conosci i Numeri', ca: 'Coneix els Números', de: 'Lerne die Zahlen', nl: 'Ontmoet de Cijfers' },
+  'level-num-1': { es: 'Contemos Juntos', en: 'Let\'s Count Together', ro: 'Să Numărăm Împreună', fr: 'Comptons Ensemble', it: 'Contiamo Insieme', ca: 'Comptem Junts', de: 'Lass uns Zählen', nl: 'Laten we Tellen' },
+  'level-num-2': { es: '¿Cuántos Hay?', en: 'How Many?', ro: 'Câte Sunt?', fr: 'Combien?', it: 'Quanti Ci Sono?', ca: 'Quants N\'hi Ha?', de: 'Wie Viele?', nl: 'Hoeveel?' },
+  'level-num-3': { es: 'Ordena los Números', en: 'Order the Numbers', ro: 'Ordonează Numerele', fr: 'Ordonne les Nombres', it: 'Ordina i Numeri', ca: 'Ordena els Números', de: 'Ordne die Zahlen', nl: 'Rangschik de Cijfers' },
+  'level-num-4': { es: 'Cuenta hasta 10', en: 'Count to 10', ro: 'Numără până la 10', fr: 'Compte jusqu\'à 10', it: 'Conta fino a 10', ca: 'Compta fins a 10', de: 'Zähle bis 10', nl: 'Tel tot 10' },
+  // Level names - Sofia
+  'level-sofia-0': { es: 'España y Rumanía', en: 'Spain and Romania', ro: 'Spania și România', fr: 'Espagne et Roumanie', it: 'Spagna e Romania', ca: 'Espanya i Romania', de: 'Spanien und Rumänien', nl: 'Spanje en Roemenië' },
+  'level-sofia-1': { es: 'Más Países', en: 'More Countries', ro: 'Mai Multe Țări', fr: 'Plus de Pays', it: 'Più Paesi', ca: 'Més Països', de: 'Mehr Länder', nl: 'Meer Landen' },
+  'level-sofia-2': { es: 'Por Europa', en: 'Around Europe', ro: 'Prin Europa', fr: 'En Europe', it: 'In Europa', ca: 'Per Europa', de: 'Durch Europa', nl: 'Door Europa' },
+  'level-sofia-3': { es: 'El Mundo', en: 'The World', ro: 'Lumea', fr: 'Le Monde', it: 'Il Mondo', ca: 'El Món', de: 'Die Welt', nl: 'De Wereld' },
+  'level-sofia-4': { es: 'Viaje Global', en: 'Global Journey', ro: 'Călătorie Globală', fr: 'Voyage Global', it: 'Viaggio Globale', ca: 'Viatge Global', de: 'Globale Reise', nl: 'Wereldwijde Reis' },
+  // Level names - Colors
+  'level-color-0': { es: 'Colores Básicos', en: 'Basic Colors', ro: 'Culori de Bază', fr: 'Couleurs de Base', it: 'Colori Base', ca: 'Colors Bàsics', de: 'Grundfarben', nl: 'Basiskleuren' },
+  'level-color-1': { es: 'Más Colores', en: 'More Colors', ro: 'Mai Multe Culori', fr: 'Plus de Couleurs', it: 'Più Colori', ca: 'Més Colors', de: 'Mehr Farben', nl: 'Meer Kleuren' },
+  'level-color-2': { es: 'Rosa y Blanco', en: 'Pink and White', ro: 'Roz și Alb', fr: 'Rose et Blanc', it: 'Rosa e Bianco', ca: 'Rosa i Blanc', de: 'Rosa und Weiß', nl: 'Roze en Wit' },
+  'level-color-3': { es: 'Todos los Colores', en: 'All Colors', ro: 'Toate Culorile', fr: 'Toutes les Couleurs', it: 'Tutti i Colori', ca: 'Tots els Colors', de: 'Alle Farben', nl: 'Alle Kleuren' },
+  'level-color-4': { es: 'Maestro de Colores', en: 'Color Master', ro: 'Maestru al Culorilor', fr: 'Maître des Couleurs', it: 'Maestro dei Colori', ca: 'Mestre dels Colors', de: 'Farbenmeister', nl: 'Kleurenmeester' },
+  // Level names - Music
+  'level-music-0': { es: 'Piano Libre', en: 'Free Piano', ro: 'Pian Liber', fr: 'Piano Libre', it: 'Piano Libero', ca: 'Piano Lliure', de: 'Freies Klavier', nl: 'Vrije Piano' },
+  'level-music-1': { es: 'Simon: Martillo', en: 'Simon: Hammer', ro: 'Simon: Ciocan', fr: 'Simon: Marteau', it: 'Simon: Martello', ca: 'Simon: Martell', de: 'Simon: Hammer', nl: 'Simon: Hamer' },
+  'level-music-2': { es: 'Simon: Twinkle', en: 'Simon: Twinkle', ro: 'Simon: Twinkle', fr: 'Simon: Twinkle', it: 'Simon: Twinkle', ca: 'Simon: Twinkle', de: 'Simon: Twinkle', nl: 'Simon: Twinkle' },
+  'level-music-3': { es: 'Simon: Happy', en: 'Simon: Happy', ro: 'Simon: Happy', fr: 'Simon: Happy', it: 'Simon: Happy', ca: 'Simon: Happy', de: 'Simon: Happy', nl: 'Simon: Happy' },
+  'level-music-4': { es: 'Himno Barça', en: 'Barça Anthem', ro: 'Imnul Barça', fr: 'Hymne Barça', it: 'Inno Barça', ca: 'Himne Barça', de: 'Barça Hymne', nl: 'Barça Volkslied' },
+  // Level descriptions
+  'desc-pairs': { es: 'parejas', en: 'pairs', ro: 'perechi', fr: 'paires', it: 'coppie', ca: 'parelles', de: 'Paare', nl: 'paren' },
+  'desc-more-animals': { es: 'Más animales', en: 'More animals', ro: 'Mai multe animale', fr: 'Plus d\'animaux', it: 'Più animali', ca: 'Més animals', de: 'Mehr Tiere', nl: 'Meer dieren' },
+  'desc-max-challenge': { es: 'Reto máximo', en: 'Max challenge', ro: 'Provocare maximă', fr: 'Défi max', it: 'Sfida massima', ca: 'Repte màxim', de: 'Max Herausforderung', nl: 'Max uitdaging' },
+  'desc-tap-count': { es: 'Toca y cuenta', en: 'Tap and count', ro: 'Atinge și numără', fr: 'Touche et compte', it: 'Tocca e conta', ca: 'Toca i compte', de: 'Tippe und zähle', nl: 'Tik en tel' },
+  'desc-guess': { es: 'Adivina', en: 'Guess', ro: 'Ghicește', fr: 'Devine', it: 'Indovina', ca: 'Endevina', de: 'Rate', nl: 'Raad' },
+  'desc-put-order': { es: 'Pon en orden', en: 'Put in order', ro: 'Pune în ordine', fr: 'Mets en ordre', it: 'Metti in ordine', ca: 'Posa en ordre', de: 'Bringe in Ordnung', nl: 'Zet in volgorde' },
+  'desc-until-10': { es: 'Hasta 10', en: 'Until 10', ro: 'Până la 10', fr: 'Jusqu\'à 10', it: 'Fino a 10', ca: 'Fins a 10', de: 'Bis 10', nl: 'Tot 10' },
+  'desc-countries': { es: 'países', en: 'countries', ro: 'țări', fr: 'pays', it: 'paesi', ca: 'països', de: 'Länder', nl: 'landen' },
+  'desc-all': { es: 'Todos', en: 'All', ro: 'Toate', fr: 'Tous', it: 'Tutti', ca: 'Tots', de: 'Alle', nl: 'Alle' },
+  'desc-main': { es: 'Principales', en: 'Main', ro: 'Principale', fr: 'Principaux', it: 'Principali', ca: 'Principals', de: 'Haupt', nl: 'Hoofd' },
+  'desc-new': { es: 'Nuevos', en: 'New', ro: 'Noi', fr: 'Nouveaux', it: 'Nuovi', ca: 'Nous', de: 'Neu', nl: 'Nieuw' },
+  'desc-final-challenge': { es: 'Reto final', en: 'Final challenge', ro: 'Provocare finală', fr: 'Défi final', it: 'Sfida finale', ca: 'Repte final', de: 'Finale Herausforderung', nl: 'Finale uitdaging' },
+  'desc-play-free': { es: '¡Toca libre!', en: 'Play free!', ro: 'Cântă liber!', fr: 'Joue libre!', it: 'Suona libero!', ca: 'Toca lliure!', de: 'Spiele frei!', nl: 'Speel vrij!' },
+  'desc-add-notes': { es: 'Añade notas', en: 'Add notes', ro: 'Adaugă note', fr: 'Ajoute des notes', it: 'Aggiungi note', ca: 'Afegeix notes', de: 'Füge Noten hinzu', nl: 'Voeg noten toe' },
+  // Game instructions
+  'tap-continue': { es: '¡Toca para continuar!', en: 'Tap to continue!', ro: 'Atinge pentru a continua!', fr: 'Touche pour continuer!', it: 'Tocca per continuare!', ca: 'Toca per continuar!', de: 'Tippe zum Weitermachen!', nl: 'Tik om door te gaan!' },
+  'guess-capitals': { es: '¡Adivina las capitales!', en: 'Guess the capitals!', ro: 'Ghicește capitalele!', fr: 'Devine les capitales!', it: 'Indovina le capitali!', ca: 'Endevina les capitals!', de: 'Rate die Hauptstädte!', nl: 'Raad de hoofdsteden!' },
+  'which-capital': { es: '¿Cuál es su capital?', en: 'What is its capital?', ro: 'Care este capitala sa?', fr: 'Quelle est sa capitale?', it: 'Qual è la sua capitale?', ca: 'Quina és la seva capital?', de: 'Was ist seine Hauptstadt?', nl: 'Wat is de hoofdstad?' },
+  'level-badge': { es: 'Nivel', en: 'Level', ro: 'Nivelul', fr: 'Niveau', it: 'Livello', ca: 'Nivell', de: 'Level', nl: 'Niveau' },
+  // Music instructions
+  'tap-notes': { es: '¡Toca las notas!', en: 'Tap the notes!', ro: 'Atinge notele!', fr: 'Touche les notes!', it: 'Tocca le note!', ca: 'Toca les notes!', de: 'Tippe auf die Noten!', nl: 'Tik op de noten!' },
+  // Completion messages
+  'you-did-it': { es: '¡Lo lograste', en: 'You did it', ro: 'Ai reușit', fr: 'Tu as réussi', it: 'Ce l\'hai fatta', ca: 'Ho has aconseguit', de: 'Du hast es geschafft', nl: 'Je hebt het gedaan' },
+  // Player levels
+  'level-beginner': { es: 'Principiante', en: 'Beginner', ro: 'Începător', fr: 'Débutant', it: 'Principiante', ca: 'Principiant', de: 'Anfänger', nl: 'Beginner' },
+  'level-explorer': { es: 'Explorador', en: 'Explorer', ro: 'Explorator', fr: 'Explorateur', it: 'Esploratore', ca: 'Explorador', de: 'Entdecker', nl: 'Ontdekker' },
+  'level-adventurer': { es: 'Aventurero', en: 'Adventurer', ro: 'Aventurier', fr: 'Aventurier', it: 'Avventuriero', ca: 'Aventurer', de: 'Abenteurer', nl: 'Avonturier' },
+  'level-master': { es: 'Maestro', en: 'Master', ro: 'Maestru', fr: 'Maître', it: 'Maestro', ca: 'Mestre', de: 'Meister', nl: 'Meester' }
 };
 
 // Translation helper function
@@ -2249,29 +3108,149 @@ if (localStorage.getItem('introSeen') === 'true') {
 
 // === SONG VIDEO ===
 function toggleSong() {
-  const modal = document.getElementById('songModal');
-  const video = document.getElementById('songVideo');
-  const btn1 = document.getElementById('musicBtn');
-  const btn2 = document.getElementById('musicBtn2');
+  // Show coming soon modal instead of video
+  showComingSoonModal();
+  playSound('tap');
+}
+
+// === SONG PLAYER FUNCTIONS ===
+let songPlaying = false;
+
+function openSongPlayer() {
+  playSound('tap');
+  game = 'song';
+  level = 0;
+  resetGameState();
+  document.getElementById('levelBadge').textContent = '🎵';
+  document.getElementById('instructionPlayerName').textContent = playerName;
+  document.getElementById('instructionText').textContent = t('song-subtitle') || '¡Escucha y canta con nosotros!';
   
-  modal.classList.add('active');
-  video.play();
-  if(btn1) btn1.classList.add('playing');
-  if(btn2) btn2.classList.add('playing');
+  // Hide all game areas and show song area
+  document.querySelectorAll('.game-area').forEach(a => a.classList.remove('active'));
+  document.getElementById('songArea').classList.add('active');
+  
+  showScreen('game');
+  
+  // Reset visualizer
+  document.getElementById('songVisualizer').classList.remove('playing');
+  document.getElementById('songProgressFill').style.width = '0%';
+  document.getElementById('playBtn').style.display = 'flex';
+  document.getElementById('pauseBtn').style.display = 'none';
+}
+
+function playSong() {
+  songPlaying = true;
+  document.getElementById('playBtn').style.display = 'none';
+  document.getElementById('pauseBtn').style.display = 'flex';
+  document.getElementById('songVisualizer').classList.add('playing');
+  
+  // Simulate progress
+  let progress = 0;
+  const progressInterval = setInterval(() => {
+    if (!songPlaying) {
+      clearInterval(progressInterval);
+      return;
+    }
+    progress += 2;
+    document.getElementById('songProgressFill').style.width = progress + '%';
+    if (progress >= 100) {
+      clearInterval(progressInterval);
+      songPlaying = false;
+      document.getElementById('songVisualizer').classList.remove('playing');
+      document.getElementById('playBtn').style.display = 'flex';
+      document.getElementById('pauseBtn').style.display = 'none';
+    }
+  }, 200);
+  
+  // Show coming soon modal after a brief moment
+  setTimeout(() => {
+    if (songPlaying) {
+      showComingSoonModal();
+    }
+  }, 1500);
   
   playSound('tap');
 }
+
+function pauseSong() {
+  songPlaying = false;
+  document.getElementById('playBtn').style.display = 'flex';
+  document.getElementById('pauseBtn').style.display = 'none';
+  document.getElementById('songVisualizer').classList.remove('playing');
+  playSound('tap');
+}
+
+function stopSong() {
+  songPlaying = false;
+  document.getElementById('playBtn').style.display = 'flex';
+  document.getElementById('pauseBtn').style.display = 'none';
+  document.getElementById('songVisualizer').classList.remove('playing');
+  document.getElementById('songProgressFill').style.width = '0%';
+  playSound('tap');
+}
+
+function showComingSoonModal() {
+  const modal = document.getElementById('comingSoonModal');
+  const titleEl = document.getElementById('comingSoonTitle');
+  const textEl = document.getElementById('comingSoonText');
+  const btnEl = document.getElementById('comingSoonBtn');
+  
+  // Translate modal content based on language
+  const translations = {
+    title: {
+      es: 'Módulo en construcción',
+      en: 'Module under construction',
+      ro: 'Modul în construcție',
+      fr: 'Module en construction',
+      it: 'Modulo in costruzione',
+      ca: 'Mòdul en construcció',
+      de: 'Modul im Aufbau',
+      nl: 'Module in opbouw'
+    },
+    text: {
+      es: 'El módulo musical de SofiNoa está siendo desarrollado por el equipo de Explicalia System. Próximamente estará disponible para que puedas cantar junto a Sofía y Noa.',
+      en: 'SofiNoa\'s music module is being developed by the Explicalia System team. It will be available soon so you can sing along with Sofía and Noa.',
+      ro: 'Modulul muzical SofiNoa este dezvoltat de echipa Explicalia System. Va fi disponibil în curând pentru a putea cânta alături de Sofía și Noa.',
+      fr: 'Le module musical de SofiNoa est en cours de développement par l\'équipe Explicalia System. Il sera bientôt disponible pour que vous puissiez chanter avec Sofía et Noa.',
+      it: 'Il modulo musicale di SofiNoa è sviluppato dal team Explicalia System. Sarà presto disponibile per cantare insieme a Sofía e Noa.',
+      ca: 'El mòdul musical de SofiNoa està sent desenvolupat per l\'equip d\'Explicalia System. Aviat estarà disponible perquè puguis cantar juntament amb Sofía i Noa.',
+      de: 'Das Musikmodul von SofiNoa wird vom Explicalia System-Team entwickelt. Es wird bald verfügbar sein, damit du zusammen mit Sofía und Noa singen kannst.',
+      nl: 'De muziekmodule van SofiNoa wordt ontwikkeld door het Explicalia System-team. Het zal binnenkort beschikbaar zijn zodat je samen met Sofía en Noa kunt zingen.'
+    },
+    btn: {
+      es: 'Entendido',
+      en: 'Got it',
+      ro: 'Am înțeles',
+      fr: 'Compris',
+      it: 'Capito',
+      ca: 'Entès',
+      de: 'Verstanden',
+      nl: 'Begrepen'
+    }
+  };
+  
+  titleEl.textContent = translations.title[lang] || translations.title.es;
+  textEl.textContent = translations.text[lang] || translations.text.es;
+  btnEl.textContent = translations.btn[lang] || translations.btn.es;
+  
+  modal.style.display = 'flex';
+}
+
+function closeComingSoonModal() {
+  const modal = document.getElementById('comingSoonModal');
+  modal.style.display = 'none';
+  playSound('tap');
+}
+
 function closeSongModal() {
   const modal = document.getElementById('songModal');
   const video = document.getElementById('songVideo');
-  const btn1 = document.getElementById('musicBtn');
-  const btn2 = document.getElementById('musicBtn2');
   
-  video.pause();
-  video.currentTime = 0;
+  if(video) {
+    video.pause();
+    video.currentTime = 0;
+  }
   modal.classList.remove('active');
-  if(btn1) btn1.classList.remove('playing');
-  if(btn2) btn2.classList.remove('playing');
 }
 
 // === DATA ===
@@ -2286,9 +3265,16 @@ const ANIMALS = [
   {emoji:"🦄",es:"UNICORNIO",en:"Unicorn"},{emoji:"🦉",es:"BÚHO",en:"Owl"},{emoji:"🦋",es:"MARIPOSA",en:"Butterfly"}
 ];
 const NUMBERS = [
-  {num:1,es:"UNO",en:"One"},{num:2,es:"DOS",en:"Two"},{num:3,es:"TRES",en:"Three"},
-  {num:4,es:"CUATRO",en:"Four"},{num:5,es:"CINCO",en:"Five"},{num:6,es:"SEIS",en:"Six"},
-  {num:7,es:"SIETE",en:"Seven"},{num:8,es:"OCHO",en:"Eight"},{num:9,es:"NUEVE",en:"Nine"},{num:10,es:"DIEZ",en:"Ten"}
+  {num:1,es:"UNO",en:"One",ro:"Unu",fr:"Un",it:"Uno",ca:"U",de:"Eins",nl:"Een"},
+  {num:2,es:"DOS",en:"Two",ro:"Doi",fr:"Deux",it:"Due",ca:"Dos",de:"Zwei",nl:"Twee"},
+  {num:3,es:"TRES",en:"Three",ro:"Trei",fr:"Trois",it:"Tre",ca:"Tres",de:"Drei",nl:"Drie"},
+  {num:4,es:"CUATRO",en:"Four",ro:"Patru",fr:"Quatre",it:"Quattro",ca:"Quatre",de:"Vier",nl:"Vier"},
+  {num:5,es:"CINCO",en:"Five",ro:"Cinci",fr:"Cinq",it:"Cinque",ca:"Cinc",de:"Fünf",nl:"Vijf"},
+  {num:6,es:"SEIS",en:"Six",ro:"Șase",fr:"Six",it:"Sei",ca:"Sis",de:"Sechs",nl:"Zes"},
+  {num:7,es:"SIETE",en:"Seven",ro:"Șapte",fr:"Sept",it:"Sette",ca:"Set",de:"Sieben",nl:"Zeven"},
+  {num:8,es:"OCHO",en:"Eight",ro:"Opt",fr:"Huit",it:"Otto",ca:"Vuit",de:"Acht",nl:"Acht"},
+  {num:9,es:"NUEVE",en:"Nine",ro:"Nouă",fr:"Neuf",it:"Nove",ca:"Nou",de:"Neun",nl:"Negen"},
+  {num:10,es:"DIEZ",en:"Ten",ro:"Zece",fr:"Dix",it:"Dieci",ca:"Deu",de:"Zehn",nl:"Tien"}
 ];
 const COUNT_OBJS = ["🍎","🌟","🎈","🦋","🌸","🍪","⚽","🎨","📚","🎁","🚗","🐕","🌺","🍊","💎"];
 const COUNTRIES = [
@@ -2308,24 +3294,24 @@ const COUNTRIES = [
   {flag:"🇯🇵",country:"Japón",capital:"Tokio",capitalEn:"Tokyo"}
 ];
 const COLORS_OBJ = [
-  {emoji:"🍎",color:"rojo",colorEn:"Red",colorFr:"Rouge",colorRo:"Roșu",hex:"#ef4444"},
-  {emoji:"🍌",color:"amarillo",colorEn:"Yellow",colorFr:"Jaune",colorRo:"Galben",hex:"#fbbf24"},
-  {emoji:"🥒",color:"verde",colorEn:"Green",colorFr:"Vert",colorRo:"Verde",hex:"#22c55e"},
-  {emoji:"🫐",color:"azul",colorEn:"Blue",colorFr:"Bleu",colorRo:"Albastru",hex:"#3b82f6"},
-  {emoji:"🧡",color:"naranja",colorEn:"Orange",colorFr:"Orange",colorRo:"Portocaliu",hex:"#f97316"},
-  {emoji:"🍇",color:"morado",colorEn:"Purple",colorFr:"Violet",colorRo:"Mov",hex:"#a855f7"},
-  {emoji:"🌸",color:"rosa",colorEn:"Pink",colorFr:"Rose",colorRo:"Roz",hex:"#ec4899"},
-  {emoji:"☁️",color:"blanco",colorEn:"White",colorFr:"Blanc",colorRo:"Alb",hex:"#f8fafc"}
+  {emoji:"🍎",color:"rojo",colorEn:"Red",colorFr:"Rouge",colorRo:"Roșu",colorIt:"Rosso",colorCa:"Vermell",colorDe:"Rot",colorNl:"Rood",hex:"#ef4444"},
+  {emoji:"🍌",color:"amarillo",colorEn:"Yellow",colorFr:"Jaune",colorRo:"Galben",colorIt:"Giallo",colorCa:"Groc",colorDe:"Gelb",colorNl:"Geel",hex:"#fbbf24"},
+  {emoji:"🥒",color:"verde",colorEn:"Green",colorFr:"Vert",colorRo:"Verde",colorIt:"Verde",colorCa:"Verd",colorDe:"Grün",colorNl:"Groen",hex:"#22c55e"},
+  {emoji:"🫐",color:"azul",colorEn:"Blue",colorFr:"Bleu",colorRo:"Albastru",colorIt:"Blu",colorCa:"Blau",colorDe:"Blau",colorNl:"Blauw",hex:"#3b82f6"},
+  {emoji:"🧡",color:"naranja",colorEn:"Orange",colorFr:"Orange",colorRo:"Portocaliu",colorIt:"Arancione",colorCa:"Taronja",colorDe:"Orange",colorNl:"Oranje",hex:"#f97316"},
+  {emoji:"🍇",color:"morado",colorEn:"Purple",colorFr:"Violet",colorRo:"Mov",colorIt:"Viola",colorCa:"Porpra",colorDe:"Lila",colorNl:"Paars",hex:"#a855f7"},
+  {emoji:"🌸",color:"rosa",colorEn:"Pink",colorFr:"Rose",colorRo:"Roz",colorIt:"Rosa",colorCa:"Rosa",colorDe:"Rosa",colorNl:"Roze",hex:"#ec4899"},
+  {emoji:"☁️",color:"blanco",colorEn:"White",colorFr:"Blanc",colorRo:"Alb",colorIt:"Bianco",colorCa:"Blanc",colorDe:"Weiß",colorNl:"Wit",hex:"#f8fafc"}
 ];
 const COLORS_PAL = [
-  {name:"ROJO",en:"Red",fr:"Rouge",ro:"Roșu",hex:"#ef4444"},
-  {name:"AMARILLO",en:"Yellow",fr:"Jaune",ro:"Galben",hex:"#fbbf24"},
-  {name:"VERDE",en:"Green",fr:"Vert",ro:"Verde",hex:"#22c55e"},
-  {name:"AZUL",en:"Blue",fr:"Bleu",ro:"Albastru",hex:"#3b82f6"},
-  {name:"NARANJA",en:"Orange",fr:"Orange",ro:"Portocaliu",hex:"#f97316"},
-  {name:"MORADO",en:"Purple",fr:"Violet",ro:"Mov",hex:"#a855f7"},
-  {name:"ROSA",en:"Pink",fr:"Rose",ro:"Roz",hex:"#ec4899"},
-  {name:"BLANCO",en:"White",fr:"Blanc",ro:"Alb",hex:"#f8fafc"}
+  {name:"ROJO",en:"Red",fr:"Rouge",ro:"Roșu",it:"Rosso",ca:"Vermell",de:"Rot",nl:"Rood",hex:"#ef4444"},
+  {name:"AMARILLO",en:"Yellow",fr:"Jaune",ro:"Galben",it:"Giallo",ca:"Groc",de:"Gelb",nl:"Geel",hex:"#fbbf24"},
+  {name:"VERDE",en:"Green",fr:"Vert",ro:"Verde",it:"Verde",ca:"Verd",de:"Grün",nl:"Groen",hex:"#22c55e"},
+  {name:"AZUL",en:"Blue",fr:"Bleu",ro:"Albastru",it:"Blu",ca:"Blau",de:"Blau",nl:"Blauw",hex:"#3b82f6"},
+  {name:"NARANJA",en:"Orange",fr:"Orange",ro:"Portocaliu",it:"Arancione",ca:"Taronja",de:"Orange",nl:"Oranje",hex:"#f97316"},
+  {name:"MORADO",en:"Purple",fr:"Violet",ro:"Mov",it:"Viola",ca:"Porpra",de:"Lila",nl:"Paars",hex:"#a855f7"},
+  {name:"ROSA",en:"Pink",fr:"Rose",ro:"Roz",it:"Rosa",ca:"Rosa",de:"Rosa",nl:"Roze",hex:"#ec4899"},
+  {name:"BLANCO",en:"White",fr:"Blanc",ro:"Alb",it:"Bianco",ca:"Blanc",de:"Weiß",nl:"Wit",hex:"#f8fafc"}
 ];
 
 // MUSIC GAME DATA - Piano notes
@@ -2466,15 +3452,30 @@ function resetGameState() {
 // === PROGRESS ===
 function loadProg(){const s=localStorage.getItem('progV13');if(s){const d=JSON.parse(s);progress=d.progress||{};playerName=d.name||'';avatar=d.avatar||'teddy';lang=d.lang||'es';}if(!progress.zoo)progress.zoo=[];if(!progress.numbers)progress.numbers=[];if(!progress.sofia)progress.sofia=[];if(!progress.colors)progress.colors=[];if(!progress.music)progress.music=[];const l=localStorage.getItem('lang');if(l)lang=l;document.querySelectorAll('.avatar-option').forEach(o=>o.classList.toggle('selected',o.dataset.avatar===avatar));updateLanguageButtons();updateTexts();}
 function saveProg(){localStorage.setItem('progV13',JSON.stringify({name:playerName,avatar:avatar,progress:progress,lang:lang}));}
-function updateProg(){let t=0,c=0;Object.keys(LEVELS).forEach(g=>{t+=LEVELS[g].length;c+=progress[g]?progress[g].length:0;});const p=t>0?Math.round((c/t)*100):0;document.getElementById('totalProgress').textContent=p+'%';document.getElementById('progressFill').style.width=p+'%';const lvl=c<5?'Principiante':c<10?'Explorador':c<15?'Aventurero':'Maestro';document.getElementById('playerLevelDisplay').textContent=lvl;document.getElementById('playerStarsDisplay').textContent='⭐ '+c;}
+function updateProg(){
+  let total=0,completed=0;
+  Object.keys(LEVELS).forEach(g=>{
+    total+=LEVELS[g].length;
+    completed+=progress[g]?progress[g].length:0;
+  });
+  const p=total>0?Math.round((completed/total)*100):0;
+  document.getElementById('totalProgress').textContent=p+'%';
+  document.getElementById('progressFill').style.width=p+'%';
+  
+  // Use translated player level names
+  const lvlKey = completed<5?'level-beginner':completed<10?'level-explorer':completed<15?'level-adventurer':'level-master';
+  document.getElementById('playerLevelDisplay').textContent = t(lvlKey);
+  document.getElementById('playerStarsDisplay').textContent='⭐ '+completed;
+}
 function updateDots(){Object.keys(LEVELS).forEach(g=>{const c=document.getElementById(g+'Levels');if(!c)return;c.innerHTML='';const l=LEVELS[g].length,d=progress[g]?progress[g].length:0;for(let i=0;i<l;i++){const dot=document.createElement('div');dot.className='level-dot';if(i<d)dot.classList.add('completed');else if(i===d)dot.classList.add('current');c.appendChild(dot);}});}
 function resetProgress(){if(confirm(lang === 'es' ? '¿Borrar todo el progreso?' : lang === 'en' ? 'Delete all progress?' : lang === 'fr' ? 'Effacer toute progression ?' : 'Ștergi tot progresul?')){progress={zoo:[],numbers:[],sofia:[],colors:[],music:[]};saveProg();updateProg();updateDots();playSound('tap');}}
 
 // === LANG ===
 function setLanguage(l){lang=l;localStorage.setItem('lang',l);updateLanguageButtons();updateTexts();saveProg();}
 function updateLanguageButtons(){
-  document.querySelectorAll('.lang-btn').forEach((b,i) => {
-    const langCode = i === 0 ? 'es' : i === 1 ? 'en' : i === 2 ? 'ro' : 'fr';
+  const langOrder = ['es', 'en', 'ro', 'fr', 'it', 'ca', 'de', 'nl'];
+  document.querySelectorAll('.lang-btn').forEach((b, i) => {
+    const langCode = langOrder[i] || 'es';
     b.classList.toggle('active', lang === langCode);
   });
 }
@@ -2616,20 +3617,19 @@ function openGameSelect(g){
 function renderLevels(){
   const c = document.getElementById('levelsGrid');
   c.innerHTML = '';
-  const names = {
-    zoo:['Memoria Fácil','Memoria Media','Memoria Difícil','Sonidos del Zoo','Safari Completo'],
-    numbers:['Conoce los Números','Contemos Juntos','¿Cuántos Hay?','Ordena los Números','Cuenta hasta 10'],
-    sofia:['España y Rumanía','Más Países','Por Europa','El Mundo','Viaje Global'],
-    colors:['Colores Básicos','Más Colores','Rosa y Blanco','Todos los Colores','Maestro de Colores'],
-    music:['Piano Libre','Simon: Martillo','Simon: Twinkle','Simon: Happy','Himno Barça']
+  
+  // Level descriptions based on game type
+  const getDesc = (gameType, idx) => {
+    const descs = {
+      zoo: ['3 ' + t('desc-pairs'), '4 ' + t('desc-pairs'), '6 ' + t('desc-pairs'), t('desc-more-animals'), t('desc-max-challenge')],
+      numbers: ['1-3', t('desc-tap-count'), t('desc-guess'), t('desc-put-order'), t('desc-until-10')],
+      sofia: ['2 ' + t('desc-countries'), '3 ' + t('desc-countries'), '5 ' + t('desc-countries'), '7 ' + t('desc-countries'), t('desc-all')],
+      colors: [t('desc-main'), t('desc-new'), t('desc-new'), t('desc-all'), t('desc-final-challenge')],
+      music: [t('desc-play-free'), t('desc-add-notes'), t('desc-add-notes'), t('desc-add-notes'), 'Barça']
+    };
+    return descs[gameType] ? descs[gameType][idx] : '';
   };
-  const descs = {
-    zoo:['3 parejas','4 parejas','6 parejas','Más animales','Reto máximo'],
-    numbers:['1 al 3','Toca y cuenta','Adivina','Pon en orden','Hasta 10'],
-    sofia:['2 países','3 países','5 países','7 países','Todos'],
-    colors:['Principales','Más colores','Nuevos','Todos','Reto final'],
-    music:['¡Toca libre!','Añade notas','Añade notas','Añade notas','Himno Barça']
-  };
+  
   const comp = progress[game] ? progress[game].length : 0;
   for(let i = 0; i < 5; i++){
     const card = document.createElement('div');
@@ -2637,7 +3637,11 @@ function renderLevels(){
     if(i < comp) card.classList.add('completed');
     else if(i === comp) card.classList.add('current');
     else card.classList.add('locked');
-    card.innerHTML = '<div class="level-number">'+(i < comp ? '✓' : i+1)+'</div><div class="level-info"><div class="level-name">'+names[game][i]+'</div><div class="level-desc">'+descs[game][i]+'</div></div><div class="level-status">'+(i < comp ? '⭐' : i === comp ? '▶' : '🔒')+'</div>';
+    
+    const levelName = t('level-' + game + '-' + i);
+    const levelDesc = getDesc(game, i);
+    
+    card.innerHTML = '<div class="level-number">'+(i < comp ? '✓' : i+1)+'</div><div class="level-info"><div class="level-name">'+levelName+'</div><div class="level-desc">'+levelDesc+'</div></div><div class="level-status">'+(i < comp ? '⭐' : i === comp ? '▶' : '🔒')+'</div>';
     if(i <= comp) card.onclick = () => startLevel(i);
     c.appendChild(card);
   }
@@ -2648,7 +3652,7 @@ function startLevel(l){
   playSound('tap');
   level = l;
   resetGameState();
-  document.getElementById('levelBadge').textContent = 'Nivel '+(l+1);
+  document.getElementById('levelBadge').textContent = t('level-badge') + ' ' + (l+1);
   document.getElementById('instructionPlayerName').textContent = playerName;
   totalRounds = LEVELS[game][level].rounds;
   initStars();
@@ -2932,10 +3936,10 @@ function showVocabImproved(emoji, es, en){
   setTimeout(() => p.classList.remove('show'), 2000);
 }
 
-// === NUMBERS ===
+// === NUMBERS - APPLE STYLE WITH BILINGUAL FEEDBACK ===
 function startNumbers(){
   document.getElementById('numbersArea').classList.add('active');
-  document.getElementById('instructionText').textContent = '¡Aprende los números!';
+  document.getElementById('instructionText').textContent = t('learn-numbers');
   const cfg = LEVELS.numbers[level];
   if(cfg.type === 'intro') runNumIntro(cfg.nums);
   else if(cfg.type === 'count') runNumCount(cfg.max);
@@ -2943,13 +3947,48 @@ function startNumbers(){
   else runNumOrder(cfg.seq);
 }
 
+// Helper function to get number word in selected language
+function getNumberLocal(nd) {
+  if(lang === 'en') return nd.en;
+  if(lang === 'ro') return nd.ro || nd.en;
+  if(lang === 'fr') return nd.fr || nd.en;
+  if(lang === 'it') return nd.it || nd.en;
+  if(lang === 'ca') return nd.ca || nd.en;
+  if(lang === 'de') return nd.de || nd.en;
+  if(lang === 'nl') return nd.nl || nd.en;
+  return nd.es; // Spanish default
+}
+
 function runNumIntro(nums){
   const n = nums[numIdx];
   const nd = NUMBERS.find(x => x.num === n);
   const c = document.getElementById('numbersContainer');
-  c.innerHTML = '<div class="number-intro-card" onclick="nextNumIntro()"><div class="number-big">'+n+'</div><div class="number-objects">'+Array(n).fill(0).map((_, i) => '<span class="number-object" style="animation-delay:'+(i*0.1)+'s">'+COUNT_OBJS[Math.floor(Math.random()*COUNT_OBJS.length)]+'</span>').join('')+'</div><div style="font-size:0.9rem;color:var(--color-text-secondary);margin-top:10px">¡Toca para continuar!</div></div>';
-  speak(nd.en);
-  learned.push({emoji:n.toString(), es:nd.es, en:nd.en});
+  
+  // Get word in selected language and English (bilingual)
+  const localWord = getNumberLocal(nd);
+  const englishWord = nd.en;
+  
+  // Apple-style intro card with bilingual display
+  c.innerHTML = `
+    <div class="number-intro-card-apple" onclick="nextNumIntro()">
+      <div class="number-display-container">
+        <div class="number-big-apple">${n}</div>
+        <div class="number-objects-apple">${Array(n).fill(0).map((_, i) => 
+          '<span class="number-object-apple" style="animation-delay:'+(i*0.08)+'s">'+COUNT_OBJS[Math.floor(Math.random()*COUNT_OBJS.length)]+'</span>'
+        ).join('')}</div>
+      </div>
+      <div class="number-bilingual-card">
+        <div class="number-word-local">${localWord}</div>
+        <div class="number-divider"></div>
+        <div class="number-word-en">${englishWord}</div>
+      </div>
+      <div class="tap-hint">${t('tap-continue')}</div>
+    </div>
+  `;
+  
+  // Speak in English for pronunciation learning
+  speak(englishWord);
+  learned.push({emoji:n.toString(), es:nd.es, en:nd.en, local:localWord});
   addStar();
 }
 
@@ -2960,7 +3999,41 @@ function runNumCount(max){
   countTouched = [];
   const obj = COUNT_OBJS[Math.floor(Math.random() * COUNT_OBJS.length)];
   const c = document.getElementById('numbersContainer');
-  c.innerHTML = '<p style="font-size:1rem;margin-bottom:10px;text-align:center">¡Toca cada objeto mientras cuentas!</p><div class="counting-objects">'+Array(countAns).fill(0).map((_,i) => '<span class="counting-item" onclick="touchCountItem(this,'+i+')">'+obj+'</span>').join('')+'</div><p style="font-size:1rem;margin:12px 0;text-align:center">¿Cuántos hay?</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">'+[countAns, Math.max(1,countAns-1), Math.min(max,countAns+1), Math.min(max,countAns+2)].sort(() => Math.random()-0.5).map(n => '<div class="count-option" onclick="checkNumCount('+n+',this)">'+n+'</div>').join('')+'</div>';
+  
+  c.innerHTML = `
+    <div class="numbers-instruction-card">
+      <p class="numbers-instruction-text">${t('count-objects')}</p>
+    </div>
+    <div class="counting-objects-apple">${Array(countAns).fill(0).map((_,i) => 
+      '<span class="counting-item-apple" onclick="touchCountItem(this,'+i+')">'+obj+'</span>'
+    ).join('')}</div>
+    <div class="numbers-question-card">
+      <p class="numbers-question-text">${t('how-many')}</p>
+    </div>
+    <div class="count-options-apple">${generateUniqueOptions(countAns, max).map(n => 
+      '<div class="count-option-apple" onclick="checkNumCount('+n+',this)">'+n+'</div>'
+    ).join('')}</div>
+  `;
+}
+
+function generateUniqueOptions(correct, max) {
+  // Generate unique options - one correct, others wrong and distinct
+  // Limit to available numbers (can't have more options than max)
+  const numOptions = Math.min(4, max);
+  const options = new Set([correct]);
+  
+  // Generate wrong options until we have enough or run out of possibilities
+  let attempts = 0;
+  const maxAttempts = 100; // Safety limit
+  
+  while(options.size < numOptions && attempts < maxAttempts) {
+    const wrong = Math.floor(Math.random() * max) + 1;
+    if(wrong !== correct) options.add(wrong);
+    attempts++;
+  }
+  
+  // Convert to array and shuffle
+  return [...options].sort(() => Math.random() - 0.5);
 }
 
 function touchCountItem(el, idx){
@@ -2978,11 +4051,30 @@ function checkNumCount(n, el){
     playSound('success');
     const nd = NUMBERS.find(x => x.num === n);
     if(nd) {
-      learned.push({emoji:n.toString(), es:nd.es, en:nd.en});
-      speak(nd.en);
+      // Get word in selected language for bilingual feedback
+      const localWord = getNumberLocal(nd);
+      const englishWord = nd.en;
+      
+      // Show bilingual feedback with synchronized audio
+      showNumberFeedback(n, localWord, englishWord, true);
+      
+      // Speak English pronunciation
+      speak(englishWord);
+      
+      learned.push({emoji:n.toString(), es:nd.es, en:nd.en, local:localWord});
     }
     addStar();
-    setTimeout(() => runNumCount(LEVELS.numbers[level].max), 700);
+    
+    // Check if level completed before running next round
+    if(score >= totalRounds) return; // Level completed, don't continue
+    
+    // Call the correct function based on level type
+    const cfg = LEVELS.numbers[level];
+    if(cfg.type === 'count') {
+      setTimeout(() => runNumCount(cfg.max), 900);
+    } else if(cfg.type === 'select') {
+      setTimeout(() => runNumSelect(cfg.max), 900);
+    }
   }else{
     el.classList.add('wrong');
     playSound('wrong');
@@ -2994,26 +4086,45 @@ function runNumSelect(max){
   countAns = Math.floor(Math.random() * max) + 1;
   const obj = COUNT_OBJS[Math.floor(Math.random() * COUNT_OBJS.length)];
   const c = document.getElementById('numbersContainer');
-  c.innerHTML = '<div class="counting-objects">'+Array(countAns).fill(0).map(() => '<span class="counting-item">'+obj+'</span>').join('')+'</div><p style="font-size:1rem;margin:12px 0;text-align:center">¿Cuántos hay?</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">'+Array.from({length:Math.min(max+2,10)},(_,i)=>i+1).sort(() => Math.random()-0.5).slice(0,4).map(n => '<div class="count-option" onclick="checkNumCount('+n+',this)">'+n+'</div>').join('')+'</div>';
+  
+  c.innerHTML = `
+    <div class="counting-objects-apple">${Array(countAns).fill(0).map(() => 
+      '<span class="counting-item-apple static">'+obj+'</span>'
+    ).join('')}</div>
+    <div class="numbers-question-card">
+      <p class="numbers-question-text">${t('how-many')}</p>
+    </div>
+    <div class="count-options-apple">${generateUniqueOptions(countAns, max).map(n => 
+      '<div class="count-option-apple" onclick="checkNumCount('+n+',this)">'+n+'</div>'
+    ).join('')}</div>
+  `;
 }
 
 function runNumOrder(seq){
   const c = document.getElementById('numbersContainer');
-  c.innerHTML = '<p style="font-size:1rem;margin-bottom:12px;text-align:center">Pon los números en orden:</p><div class="order-slots" id="orderSlots" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">'+seq.map((_,i) => '<div class="order-slot" style="width:44px;height:44px;border:3px dashed #9ca3af;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:800;color:#9ca3af" data-idx="'+i+'"></div>').join('')+'</div><div class="order-items" id="orderItems" style="margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">'+seq.slice().sort(() => Math.random()-0.5).map(n => '<div class="count-option" style="width:50px;height:50px;font-size:1.5rem" data-num="'+n+'" onclick="placeNum('+n+',this)">'+n+'</div>').join('')+'</div>';
+  c.innerHTML = `
+    <div class="numbers-instruction-card">
+      <p class="numbers-instruction-text">${t('desc-put-order')}</p>
+    </div>
+    <div class="order-slots-apple" id="orderSlots">
+      ${seq.map((_,i) => '<div class="order-slot-apple" data-idx="'+i+'"></div>').join('')}
+    </div>
+    <div class="order-items-apple" id="orderItems">
+      ${seq.slice().sort(() => Math.random()-0.5).map(n => 
+        '<div class="count-option-apple order-item" data-num="'+n+'" onclick="placeNum('+n+',this)">'+n+'</div>'
+      ).join('')}
+    </div>
+  `;
 }
 
 function placeNum(n, el){
   if(el.classList.contains('used')) return;
-  const slots = document.querySelectorAll('#orderSlots .order-slot');
+  const slots = document.querySelectorAll('#orderSlots .order-slot-apple');
   for(const s of slots){
     if(!s.textContent){
       s.textContent = n;
-      s.style.borderStyle = 'solid';
-      s.style.borderColor = 'var(--color-success)';
-      s.style.background = '#dcfce7';
-      s.style.color = 'var(--color-text)';
+      s.classList.add('filled');
       el.classList.add('used');
-      el.style.visibility = 'hidden';
       playSound('pop');
       speak(n.toString());
       break;
@@ -3025,20 +4136,58 @@ function placeNum(n, el){
     const correct = seq.every((n,i) => slots[i].textContent == n);
     if(correct){
       playSound('success');
+      
+      // Get the number word in selected language for feedback
+      const nd = NUMBERS.find(x => x.num === n);
+      if(nd) {
+        const localWord = getNumberLocal(nd);
+        speak(nd.en); // Speak English pronunciation
+      }
+      
       addStar();
+      
+      // Check if level completed before running next round
+      if(score >= totalRounds) return; // Level completed, don't continue
+      
       setTimeout(() => runNumOrder(seq), 600);
     }else{
       playSound('wrong');
-      slots.forEach(s => s.style.background = '#fef2f2');
-      setTimeout(() => { slots.forEach(s => s.style.background = ''); }, 400);
+      slots.forEach(s => s.classList.add('wrong'));
+      setTimeout(() => { slots.forEach(s => s.classList.remove('wrong')); }, 400);
     }
   }
+}
+
+function showNumberFeedback(num, localWord, enWord, isCorrect) {
+  // Create or reuse feedback popup
+  let popup = document.getElementById('numberFeedbackPopup');
+  if(!popup) {
+    popup = document.createElement('div');
+    popup.id = 'numberFeedbackPopup';
+    popup.className = 'number-feedback-popup';
+    document.body.appendChild(popup);
+  }
+  
+  // Apple-style bilingual feedback popup
+  popup.innerHTML = `
+    <div class="number-feedback-icon ${isCorrect ? 'correct' : 'wrong'}">${isCorrect ? '✓' : '✗'}</div>
+    <div class="number-feedback-number">${num}</div>
+    <div class="number-feedback-bilingual">
+      <div class="number-feedback-local">${localWord}</div>
+      <div class="number-feedback-en">${enWord}</div>
+    </div>
+  `;
+  
+  popup.classList.add('show');
+  
+  // Extended display time for synchronized audio learning
+  setTimeout(() => popup.classList.remove('show'), 1200);
 }
 
 // === SOFIA ===
 function startSofia(){
   document.getElementById('sofiaArea').classList.add('active');
-  document.getElementById('instructionText').textContent = '¡Adivina las capitales!';
+  document.getElementById('instructionText').textContent = t('guess-capitals');
   sofiaData = [...COUNTRIES].sort(() => Math.random() - 0.5).slice(0, LEVELS.sofia[level].count);
   sofiaIdx = 0;
   runSofiaQ();
@@ -3049,8 +4198,18 @@ function runSofiaQ(){
   const wrongCapitals = COUNTRIES.filter(c => c.capital !== country.capital).sort(() => Math.random() - 0.5).slice(0, 2).map(c => c.capital);
   const opts = [country.capital, ...wrongCapitals].sort(() => Math.random() - 0.5);
   const c = document.getElementById('sofiaContainer');
-  c.innerHTML = '<div class="sofia-plane">✈️</div><div class="sofia-country-card"><div class="sofia-flag">'+country.flag+'</div><div class="sofia-country-name">'+country.country+'</div><div style="font-size:0.85rem;color:var(--color-text-secondary)">¿Cuál es su capital?</div></div><div class="sofia-options">'+opts.map(cap => '<button class="capital-btn" onclick="checkCapital(\''+cap+'\',\''+country.capital+'\',this,\''+country.capitalEn+'\')">'+cap+'</button>').join('')+'</div>';
-  learned.push({emoji:country.flag, es:country.capital, en:country.capitalEn});
+  c.innerHTML = `
+    <div class="sofia-plane">✈️</div>
+    <div class="sofia-country-card">
+      <div class="sofia-flag">${country.flag}</div>
+      <div class="sofia-country-name">${country.country}</div>
+      <div class="sofia-capital-question">${t('which-capital')}</div>
+    </div>
+    <div class="sofia-options">${opts.map(cap => 
+      '<button class="capital-btn" onclick="checkCapital(\''+cap+'\',\''+country.capital+'\',this,\''+country.capitalEn+'\')">'+cap+'</button>'
+    ).join('')}</div>
+  `;
+  learned.push({emoji:country.flag, es:country.capital, en:country.capitalEn, local:country.capital});
 }
 
 function checkCapital(sel, correct, el, capEn){
@@ -3060,7 +4219,8 @@ function checkCapital(sel, correct, el, capEn){
     speak(capEn);
     addStar();
     sofiaIdx++;
-    if(sofiaIdx < sofiaData.length) setTimeout(runSofiaQ, 800);
+    // Check if level completed before continuing
+    if(sofiaIdx < sofiaData.length && score < totalRounds) setTimeout(runSofiaQ, 800);
   }else{
     el.classList.add('wrong');
     playSound('wrong');
@@ -3079,17 +4239,38 @@ function runColorQ(){
   const cfg = LEVELS.colors[level];
   let objs = cfg.colors ? COLORS_OBJ.filter(o => cfg.colors.includes(o.color)) : COLORS_OBJ;
   colorItem = objs[Math.floor(Math.random() * objs.length)];
-  let pals = cfg.colors ? COLORS_PAL.filter(c => cfg.colors.map(x => x.toUpperCase()).includes(c.name)) : COLORS_PAL;
+  
+  // Get correct color and ensure unique wrong colors (no duplicates)
   const correct = COLORS_PAL.find(c => c.name === colorItem.color.toUpperCase());
-  const wrong = pals.filter(c => c.name !== correct.name).sort(() => Math.random() - 0.5).slice(0, 5);
+  
+  // Generate unique wrong options (different from correct, no duplicates)
+  const wrongColors = COLORS_PAL.filter(c => c.name !== correct.name);
+  const shuffledWrong = wrongColors.sort(() => Math.random() - 0.5);
+  
+  // Take up to 5 unique wrong colors
+  const wrong = shuffledWrong.slice(0, Math.min(5, shuffledWrong.length));
+  
+  // Combine and shuffle - guaranteeing no duplicates
   const opts = [correct, ...wrong].sort(() => Math.random() - 0.5);
   const c = document.getElementById('colorsContainer');
   
   // Get color name in current language
   const colorName = getColorNameLocal(colorItem.color);
   
-  c.innerHTML = '<div class="color-target"><span class="target-emoji">'+colorItem.emoji+'</span><p class="target-question">'+t('what-color')+' <span class="target-word">'+colorName+'</span>?</p><p class="target-hint">'+t('tap-correct')+'</p></div><div class="color-palette">'+opts.map(o => '<div class="color-btn" style="background:'+o.hex+'" data-name="'+o.name+'" data-en="'+o.en+'" data-fr="'+(o.fr||o.en)+'" data-ro="'+(o.ro||o.en)+'" onclick="checkColor(\''+o.name+'\',this)"></div>').join('')+'</div>';
+  c.innerHTML = `
+    <div class="color-target">
+      <span class="target-emoji">${colorItem.emoji}</span>
+      <p class="target-question">${t('what-color')} <span class="target-word">${colorName}</span>?</p>
+      <p class="target-hint">${t('tap-correct')}</p>
+    </div>
+    <div class="color-palette">
+      ${opts.map(o => `
+        <div class="color-btn" style="background:${o.hex}" data-name="${o.name}" data-en="${o.en}" onclick="checkColor('${o.name}',this)"></div>
+      `).join('')}
+    </div>
+  `;
   
+  // Animate buttons appearing
   setTimeout(() => {
     document.querySelectorAll('.color-btn').forEach((btn, i) => {
       btn.style.opacity = '0';
@@ -3112,6 +4293,10 @@ function getColorNameLocal(colorLower) {
   if(lang === 'en') return colorData.en;
   if(lang === 'fr') return colorData.fr || colorData.en;
   if(lang === 'ro') return colorData.ro || colorData.en;
+  if(lang === 'it') return colorData.it || colorData.en;
+  if(lang === 'ca') return colorData.ca || colorData.en;
+  if(lang === 'de') return colorData.de || colorData.en;
+  if(lang === 'nl') return colorData.nl || colorData.en;
   return colorData.name; // Spanish default
 }
 
@@ -3133,7 +4318,7 @@ function checkColor(sel, el){
     // Speak in English
     speak(englishName);
     
-    learned.push({emoji:colorItem.emoji, es:colorItem.color, en:englishName});
+    learned.push({emoji:colorItem.emoji, es:colorItem.color, en:englishName, local:localName});
     addStar();
     
     // Haptic feedback
@@ -3145,6 +4330,9 @@ function checkColor(sel, el){
         btn.style.transform = 'scale(0.8)';
       }
     });
+    
+    // Check if level completed before running next round
+    if(score >= totalRounds) return; // Level completed, don't continue
     
     setTimeout(() => {
       hideColorFeedback();
@@ -3238,7 +4426,7 @@ function closePedagogicalPopup() {
 // === MUSIC GAME - SIMON SAYS PROGRESSION ===
 function startMusic(){
   document.getElementById('musicArea').classList.add('active');
-  document.getElementById('instructionText').textContent = '¡Toca las notas!';
+  document.getElementById('instructionText').textContent = t('tap-notes');
   const cfg = LEVELS.music[level];
   
   // Show pedagogical popup first
@@ -3517,7 +4705,7 @@ function completeLevel(){
     saveProg();
   }
   document.getElementById('completeMascot').innerHTML = '<img src="'+AVATARS[avatar]+'" style="width:60px;height:60px">';
-  document.getElementById('completeTitle').textContent = '¡Lo lograste, '+playerName+'!';
+  document.getElementById('completeTitle').textContent = t('you-did-it') + ', ' + playerName + '!';
   document.getElementById('completeSubtitle').textContent = t('level-complete');
   document.getElementById('completeStars').innerHTML = '<span class="complete-star earned" style="animation-delay:0s">⭐</span><span class="complete-star earned" style="animation-delay:0.2s">⭐</span><span class="complete-star earned" style="animation-delay:0.4s">⭐</span>';
   const wg = document.getElementById('wordsGrid');
@@ -3525,7 +4713,9 @@ function completeLevel(){
   learned.slice(0,6).forEach(w => {
     const chip = document.createElement('div');
     chip.className = 'word-chip';
-    chip.innerHTML = '<span class="word-emoji">'+w.emoji+'</span><span class="word-es">'+w.es+'</span><span class="word-en">'+w.en+'</span>';
+    // Show word in selected language and English (bilingual)
+    const localWord = w.local || w.es;
+    chip.innerHTML = '<span class="word-emoji">'+w.emoji+'</span><span class="word-es">'+localWord+'</span><span class="word-en">'+w.en+'</span>';
     chip.onclick = () => speak(w.en);
     wg.appendChild(chip);
   });
